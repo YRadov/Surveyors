@@ -66,6 +66,21 @@ function errorMessages(message){
     $('.error').text(message).fadeIn().delay(2000).fadeOut();
 }
 
+//Сброс всех параметров
+function allReset()
+{
+    Len = 0;
+    N = 1;
+    D = 0;
+    V = 0;
+    totalV = 0;
+    $('#total_val').val(0);
+    maxV = 36600;
+    $('#max-val').val(36600);
+    restVal = 0;
+    $('#max-val-rest').val($('#max-val').val());
+
+}
 //************************************************
 //*******ПРОГРАММА********************************
 //************************************************
@@ -159,6 +174,9 @@ $('#enter-diam').click(function(){
         $('#val').val('');
         D = 0;
         V = 0;
+
+        //фокус на поле ввода
+        $('#diam').focus();
     }
     else
     {
@@ -183,6 +201,21 @@ $('#max-val').keyup(function(){
     restVal = maxV - totalV;
     $('#max-val-rest').val(restVal);
 });
+//******************************************************
+
+//Новый контейнер
+$('#next-cont').click(function(){
+    result = confirm('Все данные будут удалены. Продолжить?');
+    if(result)
+    {
+        //очистка таблицы
+        $('.table-res tr td').remove();
+        //очистка всех параметров
+        $('.fa-check').css('opacity','0');
+        allReset();
+    }
+});
+
 
 //************************************************
 //*******РАЗНОЕ***********************************
