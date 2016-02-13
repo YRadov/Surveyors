@@ -12,6 +12,8 @@ var V = 0;
 //Общий объем загруженных бревен
 var totalV = 0;
 $('#total_val').val(0);
+//Для таблицы объем загруженных бревен
+var tempTotalVal = 0;
 //Максимальный объем
 var maxV = 36600;
 $('#max-val').val(36600);
@@ -162,13 +164,19 @@ $('#enter-diam').click(function(){
         //Вывод результатов в таблицу(DESC)
         for(var i=N; i > 0; i--)
         {
+            if(i == N)//для первого элемента
+                tempTotalVal = totalV;
+            else
+                tempTotalVal -= Partia[i+1]['Val'];
+
+
             $('.table-res').append(
                 '<tr>'+
                 '<td>'+i+'</td>'+
                 '<td>'+Partia[i]['L']+'</td>'+
                 '<td>'+Partia[i]['Diam']+'</td>'+
                 '<td>'+Partia[i]['Val']+'</td>'+
-                '<td>' +'totalV'+'</td>'+
+                '<td>' +tempTotalVal+'</td>'+
                 '<td><i class="fa fa-minus-square del"></i></td>'+
                 '</tr>'
             );
