@@ -127,23 +127,52 @@ $('#enter-diam').click(function(){
         totalV += V;
         $('#total_val').val(totalV + ' cм3');
 
-        //Печать таблицы результатов
-        $('.table-res').append(
-            '<tr>'+
-            '<td>'+N+'</td>'+
-            '<td>'+Len/10+'</td>'+
-            '<td>'+D+'</td>'+
-            '<td>'+V+'</td>'+
-            '<td>'+totalV+'</td>'+
-            '<td><i class="fa fa-minus-square del"></i></td>'+
-            '</tr>'
-            );
+        //Печать таблицы результатов(ASC)
+        //$('.table-res').append(
+        //    '<tr>'+
+        //    '<td>'+N+'</td>'+
+        //    '<td>'+Len/10+'</td>'+
+        //    '<td>'+D+'</td>'+
+        //    '<td>'+V+'</td>'+
+        //    '<td>'+totalV+'</td>'+
+        //    '<td><i class="fa fa-minus-square del"></i></td>'+
+        //    '</tr>'
+        //    );
 
         //Осталось загрузить
         maxV = $('#max-val').val();
         restVal = maxV - totalV;
         $('#max-val-rest').val(restVal);
 
+        //добавляем данные по текущему бревну в массив
+        Partia[N]= {
+            "L": Len/10,
+            "Diam": D,
+            "Val": V
+        };
+        //console.log (
+        //    N + ' '
+        //    +Partia[N]['L'] + ' '
+        //    +Partia[N]['Diam'] + ' '
+        //    +Partia[N]['Val'] + '\n'
+        //);
+
+        $('.table-res tr td').remove();
+
+        //Вывод результатов в таблицу(DESC)
+        for(var i=N; i > 0; i--)
+        {
+            $('.table-res').append(
+                '<tr>'+
+                '<td>'+i+'</td>'+
+                '<td>'+Partia[i]['L']+'</td>'+
+                '<td>'+Partia[i]['Diam']+'</td>'+
+                '<td>'+Partia[i]['Val']+'</td>'+
+                '<td>' +'totalV'+'</td>'+
+                '<td><i class="fa fa-minus-square del"></i></td>'+
+                '</tr>'
+            );
+        }//for
 
         //Номер бревна по порядку
         N++;
