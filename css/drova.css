@@ -128,6 +128,9 @@ label {
 .table-button {
   background-color: #28b4cc;
 }
+.tab-header {
+  background-color: #ccc;
+}
 .total-val {
   text-align: center;
 }
@@ -175,4 +178,5 @@ label {
 .numbers td:hover {
   background-color: #999;
   color: white;
+  cursor: pointer;
 }

@@ -22,11 +22,13 @@ var restVal = 0;
 $('#max-val-rest').val($('#max-val').val());
 //Общий массив загрузки
 var Partia = [];
-
-
 //Массивы соответствий D:V для разных длин
 var L_3_8 = [];
 var L_5_8 = [];
+//Набор диаметра с собственной клавиатуры
+var Diam = '';
+//Набор диаметра с клавиатуры телефона
+var temp_diam;
 
 //************************************************
 //*******ФУНКЦИИ**********************************
@@ -138,10 +140,11 @@ $('.choose-len-btn').click(function(){
 $('#diam').focus(function(){
     $('.numbers').show();
 });
-
+/*//ВВОД С КЛАВИАТУРЫ УСТРОЙСТВА
 $('#diam').keyup(function(){
 
-    var temp_diam = $(this).val();
+    temp_diam = $(this).val();
+
     //Пропускаем только четные значения
     if( !(temp_diam%2) )
     {
@@ -172,10 +175,14 @@ $('#diam').keyup(function(){
     //showParam();
 
 });
+*/
 //******************************************************
 
 //Ввод данных следующего бревна
 $('#enter-diam').click(function(){
+
+    //Сброс суммы клавиатуры
+    Diam = '';
 
     //при пустом диаметре не срабатывает
     if(D >= 12 && Len > 0 && typeof V != "undefined")
@@ -261,32 +268,42 @@ $('#next-cont').click(function(){
 
 //Удаление последней строки
 $('#delete').click(function() {
-    result = confirm('Строка будет удалена. Продолжить?');
 
-    if(result)
+    //только если есть данные в таблице
+    if(totalV)
     {
-        //пересчет общего объема
-        totalV -= Partia[N-1]['Val'];
-        $('#total_val').val(totalV);
+        result = confirm('Строка будет удалена. Продолжить?');
 
-        //вывод нового остатка
-        totalRest();
-        //Счетчик на шаг назад
-        //находим последний элемент и обнуляем его
-        N--;
-        Partia[N]['L'] = 0;
-        Partia[N]['Diam'] = 0;
-        Partia[N]['Val'] = 0;
+        if(result)
+        {
+            //пересчет общего объема
+            totalV -= Partia[N-1]['Val'];
+            $('#total_val').val(totalV);
 
-        //выводим новый номер бревна
-        $('.num').text('№ ' + N );
+            //вывод нового остатка
+            totalRest();
+            //Счетчик на шаг назад
+            //находим последний элемент и обнуляем его
+            N--;
+            Partia[N]['L'] = 0;
+            Partia[N]['Diam'] = 0;
+            Partia[N]['Val'] = 0;
 
-        //очищаем и переписываем таблицу
-        $('.table-res tr td').remove();
-        showData();
+            //выводим новый номер бревна
+            $('.num').text('№ ' + N );
 
-        //showParam();
+            //очищаем и переписываем таблицу
+            $('.table-res tr td').remove();
+            showData();
+
+            //showParam();
+        }
     }
+    else
+    {
+        errorMessages('НЕТ ДАННЫХ ДЛЯ УДАЛЕНИЯ');
+    }
+
     return false;
 });
 
@@ -297,7 +314,39 @@ $(".numbers td").click(function(){
         $(this).attr('val') != 'ok' )
     {
         diam_temp = $(this).attr('val');
-        alert(diam_temp);
+
+        Diam += diam_temp;
+
+        //заполнение поля "диаметр"
+        $('#diam').val(Diam);
+
+        temp_diam = $('#diam').val();
+
+        //Пропускаем только четные значения
+        if( !(temp_diam%2) )
+        {
+            D = $('#diam').val();
+            //Расчет объема текущего бревна
+            switch (Len)
+            {
+                case '38':
+                    V = L_3_8[D];
+                    break;
+                case '58':
+                    V = L_5_8[D];
+                    break;
+            }
+
+            //Выводим объем текущего бревна
+            if(V)
+            {
+                $('#val').val(V+'cм3');
+            }
+            else if(D < 0 || D > 9)
+            {
+                errorMessages('НЕТ ДАННЫХ ДЛЯ ДИАМЕТРА');
+            }
+        }
     }
     else if($(this).attr('val') == 'ok')
     {
@@ -306,6 +355,10 @@ $(".numbers td").click(function(){
     }
     else if($(this).attr('val') == 'del')
     {
+        if(Diam != '')
+        Diam = '';
+        $('#diam').val('');
+        $('#val').val('');
 
     }
 });

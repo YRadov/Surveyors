@@ -30,7 +30,7 @@
 
         <div class="wrapper" id="wrapper">
 
-
+            <!--НАЧАЛО ВЫБОРА ДЛИНЫ-->
             <div class="row choose-len cliarfix">
                   <h3>Выбрать длину</h3>
                 <div class="choose-len-wrap col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -43,54 +43,61 @@
                   </div>
               </div><!-- .choose-len-->
                 <hr>
+            <!--КОНЕЦ ВЫБОРА ДЛИНЫ-->
 
-
-                <h3>Ввести диаметр</h3>
+            <!--НАЧАЛО ВВОДА ДИАМЕТРА-->
+            <h3>Ввести диаметр(14 - 100)</h3>
                 <div class="error"></div>
                 <div class="well-done"></div>
             <div>
-                  <span class="num">№ 1</span> &nbsp;
-                  <input type="text" class="form-control param" id="diam" placeholder="диам."> &nbsp;
-                  <input type="text" class="form-control param" id="val" placeholder="объем" disabled>
-                </div>
-                <br>
-                <div>
-                    <div class="table-responsive">
-                        <table class="table table-button">
-                            <tr>
-                                <td rowspan="2">
-                                    <button id="enter-diam" class="btn btn-default" onClick="event.preventDefault();">
-                                        <img src="img/btn.png" height="150" width="150" alt="button">
-                                    </button>
-                                </td>
-                                <td>
-                                    <div><h4>V max</h4></div>
-                                    <div class="max-val">
-                                        <input type="text" class="form-control max-val" id="max-val" placeholder="36600">
-                                    </div>
-                                </td>
-                            <tr>
-                                <td>
-                                    <div><h4>Осталось</h4></div>
-                                    <div class="max-val">
-                                        <input type="text" class="form-control max-val" id="max-val-rest" placeholder="0" disabled>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div><!-- .table-responsive -->
+              <span class="num">№ 1</span> &nbsp;
+              <input type="text" class="form-control param" id="diam" placeholder="диам."> &nbsp;
+              <input type="text" class="form-control param" id="val" placeholder="объем" disabled>
+            </div>
+            <!--КОНЕЦ ВВОДА ДИАМЕТРА-->
 
-                    <h3>Общий объем</h3>
-                    <div class="total-val">
-                        <input type="text" class="form-control param" id="total_val" disabled>
-                    </div>
-                </div>
-                <hr>
+            <br>
 
+            <!--НАЧАЛО ВЫВОДА MAX И ОБЩЕГО ОБЪЕМОВ-->
+            <div>
+                <div class="table-responsive">
+                    <table class="table table-button">
+                        <tr>
+                            <td rowspan="2">
+                                <button id="enter-diam" class="btn btn-default" onClick="event.preventDefault();">
+                                    <img src="img/btn.png" height="150" width="150" alt="button">
+                                </button>
+                            </td>
+                            <td>
+                                <div><h4>V max</h4></div>
+                                <div class="max-val">
+                                    <input type="text" class="form-control max-val" id="max-val" placeholder="36600">
+                                </div>
+                            </td>
+                        <tr>
+                            <td>
+                                <div><h4>Осталось</h4></div>
+                                <div class="max-val">
+                                    <input type="text" class="form-control max-val" id="max-val-rest" placeholder="0" disabled>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div><!-- .table-responsive -->
+
+                <h3>Общий объем</h3>
+                <div class="total-val">
+                    <input type="text" class="form-control param" id="total_val" disabled>
+                </div>
+            </div>
+            <hr>
+            <!--КОНЕЦ ВЫВОДА MAX И ОБЩЕГО ОБЪЕМОВ-->
+
+            <!--НАЧАЛО ВЫВОДА ВСЕЙ ЗАГРУЗКИ-->
             <h3>Вся загрузка</h3>
             <div class="table-responsive">
                 <table class="table table-res table-striped table-bordered">
-                    <tr>
+                    <tr class="tab-header">
                         <th>№</th>
                         <th>L</th>
                         <th>D</th>
@@ -98,14 +105,25 @@
                         <th>Общий V</th>
                         <th id="delete" title="удалить последнюю строку"><i class="fa fa-minus-square"></i></th>
                     </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
                 </table>
             </div><!-- .table-responsive -->
+            <!--КОНЕЦ ВЫВОДА ВСЕЙ ЗАГРУЗКИ-->
 
+            <!--НАЧАЛО ПЕРЕХОДА К НОВОМУ КОНТЕЙНЕРУ-->
             <div class="next-cont">
                 <button id="next-cont" class="btn btn-default" onClick="event.preventDefault();">
                     Новый контейнер
                 </button>
             </div><!-- .next-cont-->
+            <!--КОНЕЦ ПЕРЕХОДА К НОВОМУ КОНТЕЙНЕРУ-->
 
             <footer>
                 2016&nbsp;&copy;&nbsp;<a href="http://radov.xyz/" target="_blank">radov.xyz</a>
@@ -121,29 +139,30 @@
 
   </div><!-- .container -->
 
+  <!--НАЧАЛО КЛАВИАТУРЫ-->
   <div class="table-responsive numbers">
       <table class="table table-bordered">
           <tr>
-              <td val="0"><b>0</b></td>
               <td val="1"><b>1</b></td>
               <td val="2"><b>2</b></td>
               <td val="3"><b>3</b></td>
+              <td val="4"><b>4</b></td>
           </tr>
           <tr>
-              <td val="4"><b>4</b></td>
               <td val="5"><b>5</b></td>
               <td val="6"><b>6</b></td>
               <td val="7"><b>7</b></td>
+              <td val="8"><b>8</b></td>
           </tr>
           <tr>
-              <td val="8"><b>8</b></td>
               <td val="9"><b>9</b></td>
+              <td val="0"><b>0</b></td>
               <td class="del" val="del" title="удалить"><i class="fa fa-minus-square"></i></td>
               <td class="ok" val="ok" title="закрыть"><i class="fa fa-check-square-o"></i></td>
           </tr>
       </table>
   </div><!-- .table-responsive -->
-
+  <!--КОНЕЦ КЛАВИАТУРЫ-->
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
