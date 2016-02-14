@@ -35,8 +35,8 @@ var L_5_8 = [];
 //Вывод всех параметров
 function showParam(){
     console.log (
-        'Len = ' + Len + '\n' +
         'N = ' + N  + '\n' +
+        'Len = ' + Len + '\n' +
         'D = ' + D + '\n' +
         'V = ' + V + '\n' +
         'totalV = ' + totalV  + '\n'
@@ -62,6 +62,56 @@ function allReset()
     restVal = 0;
     $('#max-val-rest').val($('#max-val').val());
 
+}
+
+//Вывод результатов в таблицу(DESC)
+function showData()
+{
+    for(var i=N; i > 0; i--)
+    {
+        if(i == N)//для первого элемента
+            tempTotalVal = totalV;
+        else
+            tempTotalVal -= Partia[i+1]['Val'];
+
+
+        if (Partia[i]['Diam'] > 0)
+        {
+            $('.table-res').append(
+                '<tr>' +
+                '<td><b>' + i + '</b></td>' +
+                '<td>' + Partia[i]['L'] + '</td>' +
+                '<td><b>' + Partia[i]['Diam'] + '</b></td>' +
+                '<td>' + Partia[i]['Val'] + '</td>' +
+                '<td><b>' + tempTotalVal + '</b></td>' +
+                '<td>' + i + '</td>' +
+                '</tr>'
+            );
+        }
+    }//for
+}
+
+//Печать таблицы результатов(ASC)
+function showDataASC()
+{
+    $('.table-res').append(
+        '<tr>' +
+        '<td>' + N + '</td>' +
+        '<td>' + Len / 10 + '</td>' +
+        '<td>' + D + '</td>' +
+        '<td>' + V + '</td>' +
+        '<td>' + totalV + '</td>' +
+        '<td><i class="fa fa-minus-square del"></i></td>' +
+        '</tr>'
+    );
+}
+
+//Подсчет остатка
+function totalRest()
+{
+    maxV = $('#max-val').val();
+    restVal = maxV - totalV;
+    $('#max-val-rest').val(restVal);
 }
 //************************************************
 //*******ПРОГРАММА********************************
@@ -129,17 +179,6 @@ $('#enter-diam').click(function(){
         totalV += V;
         $('#total_val').val(totalV + ' cм3');
 
-        //Печать таблицы результатов(ASC)
-        //$('.table-res').append(
-        //    '<tr>'+
-        //    '<td>'+N+'</td>'+
-        //    '<td>'+Len/10+'</td>'+
-        //    '<td>'+D+'</td>'+
-        //    '<td>'+V+'</td>'+
-        //    '<td>'+totalV+'</td>'+
-        //    '<td><i class="fa fa-minus-square del"></i></td>'+
-        //    '</tr>'
-        //    );
 
         //Осталось загрузить
         maxV = $('#max-val').val();
@@ -162,25 +201,7 @@ $('#enter-diam').click(function(){
         $('.table-res tr td').remove();
 
         //Вывод результатов в таблицу(DESC)
-        for(var i=N; i > 0; i--)
-        {
-            if(i == N)//для первого элемента
-                tempTotalVal = totalV;
-            else
-                tempTotalVal -= Partia[i+1]['Val'];
-
-
-            $('.table-res').append(
-                '<tr>'+
-                '<td>'+i+'</td>'+
-                '<td>'+Partia[i]['L']+'</td>'+
-                '<td>'+Partia[i]['Diam']+'</td>'+
-                '<td>'+Partia[i]['Val']+'</td>'+
-                '<td>' +tempTotalVal+'</td>'+
-                '<td><i class="fa fa-minus-square del"></i></td>'+
-                '</tr>'
-            );
-        }//for
+        showData();
 
         //Номер бревна по порядку
         N++;
@@ -214,9 +235,7 @@ $('#enter-diam').click(function(){
 
 //Изменение максимального объема
 $('#max-val').keyup(function(){
-    maxV = $('#max-val').val();
-    restVal = maxV - totalV;
-    $('#max-val-rest').val(restVal);
+    totalRest();
 });
 //******************************************************
 
@@ -232,8 +251,38 @@ $('#next-cont').click(function(){
         allReset();
     }
 });
+//******************************************************
 
+//Удаление последней строки
+$('#delete').click(function() {
+    result = confirm('Строка будет удалена. Продолжить?');
 
+    if(result)
+    {
+        //пересчет общего объема
+        totalV -= Partia[N-1]['Val'];
+        $('#total_val').val(totalV);
+
+        //вывод нового остатка
+        totalRest();
+        //Счетчик на шаг назад
+        //находим последний элемент и обнуляем его
+        N--;
+        Partia[N]['L'] = 0;
+        Partia[N]['Diam'] = 0;
+        Partia[N]['Val'] = 0;
+
+        //выводим новый номер бревна
+        $('.num').text('№ ' + N );
+
+        //очищаем и переписываем таблицу
+        $('.table-res tr td').remove();
+        showData();
+
+        //showParam();
+    }
+    return false;
+});
 //************************************************
 //*******РАЗНОЕ***********************************
 //************************************************
@@ -248,7 +297,7 @@ $('.to-top').click(function () {
 
 //************************************************
 
-
+//ТАБЛИЦЫ СООТВЕТСТВИЙ ДИАМЕТРОВ И ОБЪЕМОВ
 L_3_8 = {
     "14":68,
     "16":90,
