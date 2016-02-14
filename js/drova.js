@@ -139,6 +139,7 @@ $('.choose-len-btn').click(function(){
 //вывод клавиатуры
 $('#diam').focus(function(){
     $('.numbers').show();
+    return false;
 });
 /*//ВВОД С КЛАВИАТУРЫ УСТРОЙСТВА
 $('#diam').keyup(function(){
