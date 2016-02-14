@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+body{
+  position: relative;
+}
+
 .cliarfix:before, .cliarfix:after
 {
   content: " ";
@@ -191,3 +195,36 @@ background-color: #28b4cc;
   padding: 10px;
   max-width: 320px;
 }
+
+// À¿¬»¿“”–¿
+
+.numbers
+{
+  background-color: white;
+  display: none;
+  position: fixed;
+  bottom: 0;
+
+
+  .del  {
+    color: red;
+  }
+  .del:hover  {
+    color: red;
+  }
+
+  .ok  {
+    color: green;
+  }
+  .ok:hover  {
+    color: green;
+  }
+
+  td:hover{
+    background-color: #999;
+    color: white;
+  }
+
+}
+
+

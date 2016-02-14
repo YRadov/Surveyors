@@ -2,6 +2,9 @@
   margin: 0;
   padding: 0;
 }
+body {
+  position: relative;
+}
 .cliarfix:before,
 .cliarfix:after {
   content: " ";
@@ -150,4 +153,26 @@ label {
   margin: 0 auto;
   padding: 10px;
   max-width: 320px;
+}
+.numbers {
+  background-color: white;
+  display: none;
+  position: fixed;
+  bottom: 0;
+}
+.numbers .del {
+  color: red;
+}
+.numbers .del:hover {
+  color: red;
+}
+.numbers .ok {
+  color: green;
+}
+.numbers .ok:hover {
+  color: green;
+}
+.numbers td:hover {
+  background-color: #999;
+  color: white;
 }

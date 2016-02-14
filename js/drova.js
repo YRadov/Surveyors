@@ -133,7 +133,12 @@ $('.choose-len-btn').click(function(){
 });
 //******************************************************
 
-//Ввод диаметра следующего бревна
+//ВВОД ДИАМЕТРА СЛЕДУЮЩЕГО БРЕВНА
+//вывод клавиатуры
+$('#diam').focus(function(){
+    $('.numbers').show();
+});
+
 $('#diam').keyup(function(){
 
     var temp_diam = $(this).val();
@@ -171,6 +176,7 @@ $('#diam').keyup(function(){
 
 //Ввод данных следующего бревна
 $('#enter-diam').click(function(){
+
     //при пустом диаметре не срабатывает
     if(D >= 12 && Len > 0 && typeof V != "undefined")
     {
@@ -283,6 +289,27 @@ $('#delete').click(function() {
     }
     return false;
 });
+
+//ВВОД ДАННЫХ С КЛАВИАТУРЫ
+$(".numbers td").click(function(){
+
+    if( $(this).attr('val') != 'del' &&
+        $(this).attr('val') != 'ok' )
+    {
+        diam_temp = $(this).attr('val');
+        alert(diam_temp);
+    }
+    else if($(this).attr('val') == 'ok')
+    {
+        //убрать клавиатуру
+        $('.numbers').hide();
+    }
+    else if($(this).attr('val') == 'del')
+    {
+
+    }
+});
+
 //************************************************
 //*******РАЗНОЕ***********************************
 //************************************************
