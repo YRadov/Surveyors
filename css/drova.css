@@ -3,6 +3,7 @@
   padding: 0;
 }
 body {
+  background-color: #1b6d85;
   position: relative;
 }
 .cliarfix:before,
@@ -15,6 +16,13 @@ body {
 }
 #all-lag {
   font-size: 20px;
+}
+#btn-text-enter {
+  color: red;
+  position: absolute;
+  left: 40%;
+  top: 0;
+  font-weight: bold;
 }
 .choose-len {
   font-size: 25px;
@@ -129,14 +137,30 @@ label {
   background-color: #28b4cc;
 }
 .tab-header {
-  background-color: #ccc;
+  background-color: #ccc !important;
 }
 .total-val {
   text-align: center;
 }
+.total-val #total_val {
+  background-color: green;
+  color: white;
+}
 .total-val input {
   width: 100%;
   text-align: center;
+}
+.total-val-top {
+  display: inline-block;
+  margin: 5px auto;
+  width: 140px;
+}
+.total-val-top #total_val_top {
+  color: white;
+  background-color: green;
+  font-size: 16px;
+  padding: 0;
+  height: 20px;
 }
 #val {
   width: 110px;
@@ -174,6 +198,9 @@ label {
 }
 .numbers .ok:hover {
   color: green;
+}
+.numbers td {
+  font-size: 20px;
 }
 .numbers td:hover {
   background-color: #999;

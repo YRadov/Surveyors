@@ -12,6 +12,7 @@ var V = 0;
 //Общий объем загруженных бревен
 var totalV = 0;
 $('#total_val').val(0);
+$('#total_val_top').val(0);
 //Для таблицы объем загруженных бревен
 var tempTotalVal = 0;
 //Максимальный объем
@@ -55,14 +56,18 @@ function allReset()
 {
     Len = 0;
     N = 1;
+    $('.num').text('№ ' + N );
+
     D = 0;
     V = 0;
     totalV = 0;
     $('#total_val').val(0);
+    $('#total_val_top').val(0);
     maxV = 36600;
     $('#max-val').val(36600);
     restVal = 0;
-    $('#max-val-rest').val($('#max-val').val());
+    $('#max-val-rest').val($('#max-val').val())
+                      .css("backgroundColor","white");
 
 }
 
@@ -130,6 +135,7 @@ $('.choose-len-btn').click(function(){
     $('#val').val('');
     D = 0;
     V = 0;
+    Diam = '';
 
     //showParam();
 });
@@ -140,7 +146,7 @@ $('.choose-len-btn').click(function(){
 $('#diam').focus(function(){
     $('.numbers').show();
 });
-/*//ВВОД С КЛАВИАТУРЫ УСТРОЙСТВА
+//ВВОД С КЛАВИАТУРЫ УСТРОЙСТВА
 $('#diam').keyup(function(){
 
     temp_diam = $(this).val();
@@ -175,7 +181,7 @@ $('#diam').keyup(function(){
     //showParam();
 
 });
-*/
+
 //******************************************************
 
 //Ввод данных следующего бревна
@@ -191,12 +197,27 @@ $('#enter-diam').click(function(){
         //Расчет общего объема
         totalV += V;
         $('#total_val').val(totalV + ' cм3');
+        $('#total_val_top').val(totalV + ' cм3');
 
 
         //Осталось загрузить
         maxV = $('#max-val').val();
         restVal = maxV - totalV;
         $('#max-val-rest').val(restVal);
+        if(restVal < 2000)
+        {
+            $('#max-val-rest').css({
+                "backgroundColor":"red",
+                "color":"white"
+            });
+        }
+        else
+        {
+            $('#max-val-rest').css({
+                "backgroundColor":"white",
+                "color":"black"
+                });
+        }
 
         //добавляем данные по текущему бревну в массив
         Partia[N]= {
@@ -367,6 +388,15 @@ $(".numbers td").click(function(){
 //*******РАЗНОЕ***********************************
 //************************************************
 
+//запрет перезагрузки страницы
+// location.reload(function(){
+// 	return false;
+// }); 
+// windows.onload(function(){
+// 	return false;
+// }); 
+
+
 //Скролл вверх
 $('.to-top').click(function () {
     $('body,html').animate({
@@ -375,6 +405,14 @@ $('.to-top').click(function () {
     return false;
 });
 
+//************************************************
+//ввод в поле без фокуса
+/*
+$("input[type='text']").live('click', function () {
+    $("input[type='text']").removeClass("focusElement");
+    $(this).addClass("focusElement").focus();
+});
+*/
 //************************************************
 
 //ТАБЛИЦЫ СООТВЕТСТВИЙ ДИАМЕТРОВ И ОБЪЕМОВ

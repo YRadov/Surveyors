@@ -51,8 +51,12 @@
                 <div class="well-done"></div>
             <div>
               <span class="num">№ 1</span> &nbsp;
-              <input type="text" class="form-control param" id="diam" placeholder="диам."> &nbsp;
+              <input type="text" class="form-control param" id="diam" readonly="readonly" placeholder="диам."> &nbsp;
               <input type="text" class="form-control param" id="val" placeholder="объем" disabled>
+            </div>
+            <span>Общий объем</span>
+            <div class="total-val total-val-top">
+                <input type="text" class="form-control param" id="total_val_top" disabled>
             </div>
             <!--КОНЕЦ ВВОДА ДИАМЕТРА-->
 
@@ -64,21 +68,24 @@
                     <table class="table table-button">
                         <tr>
                             <td rowspan="2">
-                                <button id="enter-diam" class="btn btn-default" onClick="event.preventDefault();">
-                                    <img src="img/btn.png" height="150" width="150" alt="button">
-                                </button>
-                            </td>
-                            <td>
-                                <div><h4>V max</h4></div>
-                                <div class="max-val">
-                                    <input type="text" class="form-control max-val" id="max-val" placeholder="36600">
+                                <div style="position: relative;">
+                                    <button id="enter-diam" class="btn btn-default" onClick="event.preventDefault();">
+                                        <img src="img/btn.png" height="150" width="150" alt="button">
+                                    </button>
+                                    <div id="btn-text-enter">ВВОД</div>
                                 </div>
                             </td>
-                        <tr>
                             <td>
                                 <div><h4>Осталось</h4></div>
                                 <div class="max-val">
                                     <input type="text" class="form-control max-val" id="max-val-rest" placeholder="0" disabled>
+                                </div>
+                            </td>
+                        <tr>
+                            <td>
+                                <div><h4>V max</h4></div>
+                                <div class="max-val">
+                                    <input type="text" class="form-control max-val" id="max-val" placeholder="36600">
                                 </div>
                             </td>
                         </tr>
@@ -140,7 +147,8 @@
   </div><!-- .container -->
 
   <!--НАЧАЛО КЛАВИАТУРЫ-->
-  <div class="table-responsive numbers hidden-lg hidden-md hidden-sm">
+  <!--<div class="table-responsive numbers hidden-lg hidden-md hidden-sm">-->
+  <div class="table-responsive numbers">
       <table class="table table-bordered">
           <tr>
               <td val="1"><b>1</b></td>
