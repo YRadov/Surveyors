@@ -21,11 +21,17 @@ $('#max-val').val(36600);
 //Осталось загрузить
 var restVal = 0;
 $('#max-val-rest').val($('#max-val').val());
+//Когда предупреждать о близком конце загрузки
+var attention = 2000;//cm3
 //Общий массив загрузки
 var Partia = [];
 //Массивы соответствий D:V для разных длин
 var L_3_8 = [];
 var L_5_8 = [];
+var LM_2_9 = [];
+var LM_3_7 = [];
+var LM_3_8 = [];
+var LM_3_9 = [];
 //Набор диаметра с собственной клавиатуры
 var Diam = '';
 //Набор диаметра с клавиатуры телефона
@@ -68,6 +74,20 @@ function allReset()
     restVal = 0;
     $('#max-val-rest').val($('#max-val').val())
                       .css("backgroundColor","white");
+}
+
+//Сброс всех параметров
+function allMelcodrevReset() {
+    $('#diam12').val('0');
+    $('#val12').val('0');
+    $('#diam14').val('0');
+    $('#val14').val('0');
+    $('#diam16').val('0');
+    $('#val16').val('0');
+    $('#diam18').val('0');
+    $('#val18').val('0');
+    $('#diam_total').val('0');
+    $('#val_total').val('0');
 
 }
 
@@ -204,7 +224,7 @@ $('#enter-diam').click(function(){
         maxV = $('#max-val').val();
         restVal = maxV - totalV;
         $('#max-val-rest').val(restVal);
-        if(restVal < 2000)
+        if(restVal < attention)
         {
             $('#max-val-rest').css({
                 "backgroundColor":"red",
@@ -327,7 +347,7 @@ $('#delete').click(function() {
 
     return false;
 });
-
+//******************************************************
 //ВВОД ДАННЫХ С КЛАВИАТУРЫ
 $(".numbers td").click(function(){
 
@@ -383,6 +403,117 @@ $(".numbers td").click(function(){
 
     }
 });
+//******************************************************
+//МЕЛКОДРЕВ
+//включить
+$('#switch-on-melcodrev').click(function(){
+    $('.melcodrev').show();
+    //обнуляем все данные
+    allMelcodrevReset();
+});
+//выключить
+$('#switch-of-melcodrev').click(function(){
+    //allMelcodrevReset();
+    //llReset();
+    $('.melcodrev').hide();
+});
+//сбросить все параметры
+$('#reset-melcodrev').click(function(){
+    allMelcodrevReset();
+});
+//сброс при изменении длины
+$('#Lmd').change(function(){
+    allMelcodrevReset();
+});
+
+//очистка поля при наведении
+$('#diam12, #diam14, #diam16, #diam18').focus(function(){
+    $(this).val('');
+});
+
+//ввод значений
+$('#diam12, #diam14, #diam16, #diam18').keyup(function(){
+
+    //выбор длины
+    Lmd = $('#Lmd').val();
+    console.log('Lmd = '+Lmd);
+    D = $(this).attr('diam');
+    //console.log('\nD = '+D);
+
+    //Расчет объема текущего бревна
+    switch (Lmd)
+    {
+        case 'LM_2_9':
+            V = LM_2_9[D];
+            break;
+        case 'LM_3_7':
+            V = LM_3_7[D];
+            break;
+        case 'LM_3_8':
+            V = LM_3_8[D];
+            break;
+        case 'LM_3_9':
+            V = LM_3_9[D];
+            break;
+    }
+
+    //console.log('V = '+V);
+    //получаем текущий id
+    var diam_temp = '#diam' + D;
+    var val_temp = '#val' + D;
+
+    $(val_temp).val($(diam_temp).val() * V);
+
+    //общие данные
+    $('#diam_total').val(
+        parseInt($('#diam12').val())+
+        parseInt($('#diam14').val())+
+        parseInt($('#diam16').val())+
+        parseInt($('#diam18').val())
+    );
+
+    $('#val_total').val(
+        parseInt( $('#val12').val())+
+        parseInt( $('#val14').val())+
+        parseInt( $('#val16').val())+
+        parseInt( $('#val18').val())
+    );
+
+});
+//******************************************************
+//ВОЗОБНОВЛЕНИЕ РАБОТЫ ПОСЛЕ СБОЯ
+//включить меню
+$('.show-sos').click(function(){
+
+    $('.sos-wrapper').css('display','block');
+
+    //var wrap = $('.sos-wrapper').height();
+    var wrap = Wi.document.height();
+    console.log ('wrap = '+ wrap);
+    var sos = $('.sos').height();
+    console.log ('sos = '+ sos);
+
+    return false;
+});
+//убрать меню
+$('.sos-btn').click(function(){
+
+    $('.sos-wrapper').hide();
+    return false;
+});
+
+//выровнять меню по вертикали
+var wrap = $('.sos-wrapper').height();
+console.log ('wrap = '+ wrap);
+//var sos = $('.sos').height();//высота слайдера
+//console.log ('sos = '+ sos);
+//var sos_offset = wrap/2 - slide/2;// - 30;
+//console.log ('slide_offset = '+ slide_offset);
+//$('.sos').css('top',slide_offset);
+//var internal_main = $('.main').height();//высота слайдера
+//var main_offset = (main - internal_main)/2 - 70;
+//$('.main').css('top',main_offset);
+
 
 //************************************************
 //*******РАЗНОЕ***********************************
@@ -416,6 +547,39 @@ $("input[type='text']").live('click', function () {
 //************************************************
 
 //ТАБЛИЦЫ СООТВЕТСТВИЙ ДИАМЕТРОВ И ОБЪЕМОВ
+LM_2_9 = {
+    "12":0,
+    "14":50,
+    "16":66,
+    "18":83,
+    "20":103,
+    "22":125
+};
+LM_3_7 = {
+    "12":48,
+    "14":66,
+    "16":87,
+    "18":100,
+    "20":134,
+    "22":164
+};
+LM_3_8 = {
+    "12":50,
+    "14":68,
+    "16":90,
+    "18":113,
+    "20":139,
+    "22":170
+};
+LM_3_9 = {
+    "12":0,
+    "14":70,
+    "16":92,
+    "18":117,
+    "20":143,
+    "22":173
+};
+
 L_3_8 = {
     "14":68,
     "16":90,
