@@ -238,8 +238,6 @@ label {
 .melcodrev {
   background-color: white;
   display: none;
-  position: fixed;
-  top: 0;
 }
 .melcodrev .close-melcodrev {
   background-color: red;

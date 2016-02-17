@@ -30,6 +30,85 @@
 
         <div class="wrapper" id="wrapper">
 
+            <!--НАЧАЛО МЕЛКОДРЕВА-->
+            <div class="table-responsive melcodrev">
+                <table class="table table-bordered">
+                    <tr>
+                        <td>
+                            <h4>ДЛИНА</h4>
+                            <select class="form-control" id="Lmd">
+                                <option value="LM_3_8">3,8 м</option>
+                                <option value="LM_2_9">2.9 м</option>
+                                <option value="LM_3_7">3,7 м</option>
+                                <option value="LM_3_9">3,9 м</option>
+                            </select>
+                        </td>
+                        <td class="close-melcodrev">
+                            <button id="reset-melcodrev" class="btn btn-default">
+                                СБРОС
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i class="fa fa-ban"></i>
+                            12 - <input type="text" diam="12" class="form-control param" id="diam12" placeholder="шт">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control param" id="val12" placeholder="объем" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i class="fa fa-ban"></i>
+                            14 - <input type="text" diam="14" class="form-control param" id="diam14" placeholder="шт">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control param" id="val14" placeholder="объем" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i class="fa fa-ban"></i>
+                            16 - <input type="text" diam="16" class="form-control param" id="diam16" placeholder="шт">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control param" id="val16" placeholder="объем" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i class="fa fa-ban"></i>
+                            18 - <input type="text" diam="18" class="form-control param" id="diam18" placeholder="шт">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control param" id="val18" placeholder="объем" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><h4>ВСЕГО</h4></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            шт
+                            <input type="text" class="form-control param" id="diam_total" placeholder="0" readonly>
+                        </td>
+                        <td>
+                            v
+                            <input type="text" class="form-control param" id="val_total" placeholder="0" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button id="switch-of-melcodrev" class="btn btn-default">
+                                ЗАКРЫТЬ
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div><!-- .table-responsive -->
+            <!--КОНЕЦ ФОРМЫ МЕЛКОДРЕВА-->
+
             <!--НАЧАЛО ВЫБОРА ДЛИНЫ-->
             <div class="row choose-len cliarfix">
                   <h3>Выбрать длину</h3>
@@ -188,85 +267,84 @@
   <!--КОНЕЦ КЛАВИАТУРЫ-->
 
 
-  <!--НАЧАЛО МЕЛКОДРЕВА-->
-  <!--<div class="table-responsive numbers hidden-lg hidden-md hidden-sm">-->
-  <div class="table-responsive melcodrev">
-      <table class="table table-bordered">
-          <tr>
-              <td>
-                  <h4>ДЛИНА</h4>
-                  <select class="form-control" id="Lmd">
-                      <option value="LM_3_8">3,8 м</option>
-                      <option value="LM_2_9">2.9 м</option>
-                      <option value="LM_3_7">3,7 м</option>
-                      <option value="LM_3_9">3,9 м</option>
-                  </select>
-              </td>
-              <td class="close-melcodrev">
-                  <button id="reset-melcodrev" class="btn btn-default">
-                      СБРОС
-                  </button>
-              </td>
-          </tr>
-          <tr>
-              <td>
-                  <i class="fa fa-ban"></i>
-                 12 - <input type="text" diam="12" class="form-control param" id="diam12" placeholder="шт">
-              </td>
-              <td>
-                  <input type="text" class="form-control param" id="val12" placeholder="объем" readonly>
-              </td>
-          </tr>
-          <tr>
-              <td>
-                  <i class="fa fa-ban"></i>
-                 14 - <input type="text" diam="14" class="form-control param" id="diam14" placeholder="шт">
-              </td>
-              <td>
-                  <input type="text" class="form-control param" id="val14" placeholder="объем" readonly>
-              </td>
-          </tr>
-          <tr>
-              <td>
-                  <i class="fa fa-ban"></i>
-                 16 - <input type="text" diam="16" class="form-control param" id="diam16" placeholder="шт">
-              </td>
-              <td>
-                  <input type="text" class="form-control param" id="val16" placeholder="объем" readonly>
-              </td>
-          </tr>
-          <tr>
-              <td>
-                  <i class="fa fa-ban"></i>
-                 18 - <input type="text" diam="18" class="form-control param" id="diam18" placeholder="шт">
-              </td>
-              <td>
-                  <input type="text" class="form-control param" id="val18" placeholder="объем" readonly>
-              </td>
-          </tr>
-          <tr>
-              <td colspan="2"><h4>ВСЕГО</h4></td>
-          </tr>
-          <tr>
-              <td>
-                  шт
-                   <input type="text" class="form-control param" id="diam_total" placeholder="0" readonly>
-              </td>
-              <td>
-                  v
-                   <input type="text" class="form-control param" id="val_total" placeholder="0" readonly>
-              </td>
-          </tr>
-          <tr>
-              <td colspan="2">
-                  <button id="switch-of-melcodrev" class="btn btn-default">
-                      ЗАКРЫТЬ
-                  </button>
-              </td>
-          </tr>
-      </table>
-  </div><!-- .table-responsive -->
-  <!--КОНЕЦ ФОРМЫ МЕЛКОДРЕВА-->
+  <!--&lt;!&ndash;НАЧАЛО МЕЛКОДРЕВА&ndash;&gt;-->
+  <!--<div class="table-responsive melcodrev">-->
+      <!--<table class="table table-bordered">-->
+          <!--<tr>-->
+              <!--<td>-->
+                  <!--<h4>ДЛИНА</h4>-->
+                  <!--<select class="form-control" id="Lmd">-->
+                      <!--<option value="LM_3_8">3,8 м</option>-->
+                      <!--<option value="LM_2_9">2.9 м</option>-->
+                      <!--<option value="LM_3_7">3,7 м</option>-->
+                      <!--<option value="LM_3_9">3,9 м</option>-->
+                  <!--</select>-->
+              <!--</td>-->
+              <!--<td class="close-melcodrev">-->
+                  <!--<button id="reset-melcodrev" class="btn btn-default">-->
+                      <!--СБРОС-->
+                  <!--</button>-->
+              <!--</td>-->
+          <!--</tr>-->
+          <!--<tr>-->
+              <!--<td>-->
+                  <!--<i class="fa fa-ban"></i>-->
+                 <!--12 - <input type="text" diam="12" class="form-control param" id="diam12" placeholder="шт">-->
+              <!--</td>-->
+              <!--<td>-->
+                  <!--<input type="text" class="form-control param" id="val12" placeholder="объем" readonly>-->
+              <!--</td>-->
+          <!--</tr>-->
+          <!--<tr>-->
+              <!--<td>-->
+                  <!--<i class="fa fa-ban"></i>-->
+                 <!--14 - <input type="text" diam="14" class="form-control param" id="diam14" placeholder="шт">-->
+              <!--</td>-->
+              <!--<td>-->
+                  <!--<input type="text" class="form-control param" id="val14" placeholder="объем" readonly>-->
+              <!--</td>-->
+          <!--</tr>-->
+          <!--<tr>-->
+              <!--<td>-->
+                  <!--<i class="fa fa-ban"></i>-->
+                 <!--16 - <input type="text" diam="16" class="form-control param" id="diam16" placeholder="шт">-->
+              <!--</td>-->
+              <!--<td>-->
+                  <!--<input type="text" class="form-control param" id="val16" placeholder="объем" readonly>-->
+              <!--</td>-->
+          <!--</tr>-->
+          <!--<tr>-->
+              <!--<td>-->
+                  <!--<i class="fa fa-ban"></i>-->
+                 <!--18 - <input type="text" diam="18" class="form-control param" id="diam18" placeholder="шт">-->
+              <!--</td>-->
+              <!--<td>-->
+                  <!--<input type="text" class="form-control param" id="val18" placeholder="объем" readonly>-->
+              <!--</td>-->
+          <!--</tr>-->
+          <!--<tr>-->
+              <!--<td colspan="2"><h4>ВСЕГО</h4></td>-->
+          <!--</tr>-->
+          <!--<tr>-->
+              <!--<td>-->
+                  <!--шт-->
+                   <!--<input type="text" class="form-control param" id="diam_total" placeholder="0" readonly>-->
+              <!--</td>-->
+              <!--<td>-->
+                  <!--v-->
+                   <!--<input type="text" class="form-control param" id="val_total" placeholder="0" readonly>-->
+              <!--</td>-->
+          <!--</tr>-->
+          <!--<tr>-->
+              <!--<td colspan="2">-->
+                  <!--<button id="switch-of-melcodrev" class="btn btn-default">-->
+                      <!--ЗАКРЫТЬ-->
+                  <!--</button>-->
+              <!--</td>-->
+          <!--</tr>-->
+      <!--</table>-->
+  <!--</div>&lt;!&ndash; .table-responsive &ndash;&gt;-->
+  <!--&lt;!&ndash;КОНЕЦ ФОРМЫ МЕЛКОДРЕВА&ndash;&gt;-->
 
   <!--НАЧАЛО ВОЗОБНОВЕНИЯ РАБОТЫ ПОСЛЕ СБОЯ-->
   <!--<div class="sos-wrapper">-->
