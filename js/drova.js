@@ -245,12 +245,37 @@ $('#enter-diam').click(function(){
             "Diam": D,
             "Val": V
         };
-        //console.log (
-        //    N + ' '
-        //    +Partia[N]['L'] + ' '
-        //    +Partia[N]['Diam'] + ' '
-        //    +Partia[N]['Val'] + '\n'
-        //);
+        //********************************
+        //начало отправки данных на сервер
+        $.ajax({
+            "type":"post",
+            "url":"controller.php",
+            "data":{
+                "n": N,
+                "v": V
+            },
+            "dataType":'json',
+            "success":function(data){
+                alert(data.message +"; № = "+data.n+"; V = "+data.v);
+
+
+                //включение корзины
+                //if(data.qty > 0)
+                //{
+                //    $("#cart").show();
+                //}
+                //
+                ////добавление товара из категории
+                //if(data.act = "plus_one")
+                //{
+                //    $("#cart_price span").text(data.price);
+                //    $("#cart_qty span").text(data.qty);
+                //    $(".alert").fadeIn().text(data.message).delay(500).fadeOut(500);
+                //}
+            }
+        });
+        //конец отправки данных на сервер
+        //********************************
 
         $('.table-res tr td').remove();
 
