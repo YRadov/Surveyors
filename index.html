@@ -150,11 +150,11 @@
             <div>
               <span class="num">№ 1</span> &nbsp;
               <input type="text" class="form-control param" id="diam" readonly="readonly" placeholder="диам."> &nbsp;
-              <input type="text" class="form-control param" id="val" placeholder="объем" disabled>
+              <input type="text" class="form-control param" id="val" placeholder="объем" readonly="readonly">
             </div>
             <span>Общий объем</span>
             <div class="total-val total-val-top">
-                <input type="text" class="form-control param" id="total_val_top" disabled>
+                <input type="text" class="form-control param" id="total_val_top"  readonly="readonly">
             </div>
             <!--КОНЕЦ ВВОДА ДИАМЕТРА-->
 
@@ -176,14 +176,14 @@
                             <td>
                                 <div><h4>Осталось</h4></div>
                                 <div class="max-val">
-                                    <input type="text" class="form-control max-val" id="max-val-rest" placeholder="0" disabled>
+                                    <input type="text" class="form-control max-val" id="max-val-rest" placeholder="0"  readonly="readonly">
                                 </div>
                             </td>
                         <tr>
                             <td>
                                 <div><h4>V max</h4></div>
                                 <div class="max-val">
-                                    <input type="text" class="form-control max-val" id="max-val" placeholder="36600">
+                                    <input type="text" class="form-control max-val" id="max-val" placeholder="36200">
                                 </div>
                             </td>
                         </tr>
@@ -192,7 +192,7 @@
 
                 <h3>Общий объем</h3>
                 <div class="total-val">
-                    <input type="text" class="form-control param" id="total_val" disabled>
+                    <input type="text" class="form-control param" id="total_val"  readonly="readonly">
                 </div>
             </div>
             <hr>
@@ -239,11 +239,11 @@
             <!--КОНЕЦ ВКЛЮЧИТЬ МЕЛКОДРЕВ-->
             <br>
             <!--НАЧАЛО ВОЗВРАТА ПОСЛЕ СБОЯ-->
-            <!--<div class="show-sos">-->
-                <!--<button id="switch-sos" class="btn btn-default">-->
-                    <!--После сбоя-->
-                <!--</button>-->
-            <!--</div>&lt;!&ndash; .next-cont&ndash;&gt;-->
+            <div class="show-sos">
+                <button id="switch-sos" class="btn btn-default">
+                    Задать начало
+                </button>
+            </div><!-- .next-cont-->
             <!--&lt;!&ndash;КОНЕЦ ВОЗВРАТА ПОСЛЕ СБОЯ&ndash;&gt;-->
 
             <div class="mesages_ajax">
@@ -323,7 +323,7 @@
     <script src="js/jquery-1.12.0.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/drova.js"></script>
+    <script src="js/drova.min.js"></script>
     <script>
 
 

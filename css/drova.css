@@ -185,7 +185,7 @@ label {
   background-color: white;
   display: none;
   position: fixed;
-  bottom: 0;
+  bottom: -15px;
 }
 .numbers .del {
   color: red;
@@ -200,7 +200,8 @@ label {
   color: green;
 }
 .numbers td {
-  font-size: 20px;
+  font-size: 30px;
+  padding: 5px;
 }
 .numbers td:hover {
   background-color: #999;

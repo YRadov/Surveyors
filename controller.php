@@ -1,6 +1,5 @@
 <?php
-session_start();
-//unset ($_SESSION['data']);
+////unset ($_SESSION['data']);
 //session_destroy();
 $num = $_POST['log_num'];
 $_SESSION['data'][$num] = [
@@ -9,7 +8,7 @@ $_SESSION['data'][$num] = [
     'val'=>$_POST['log_val']
 ];
 
-$message = "Данные приняты на сервере";
+$message = "Данные сохранены";
 $res = [];
 $res = [
     "message" => $message,
