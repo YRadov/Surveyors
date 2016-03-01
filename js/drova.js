@@ -3,7 +3,7 @@
 //************************************************
 //очистка памяти
 //localStorage.clear();
-showWebStoreData();
+//showWebStoreData();
 
 //Длина загружаемого леса
 var Len = 0;
@@ -369,7 +369,7 @@ $(".numbers td").click(function(){
 //Ввод данных следующего бревна
 $('#enter-diam').click(function(){
 
-    showWebStoreData();
+    //showWebStoreData();
 
     //Сброс суммы клавиатуры
     Diam = '';
@@ -416,23 +416,23 @@ $('#enter-diam').click(function(){
         var log_diam = D;
         var log_val = V;
 
-        $.ajax({
-            "type":"post",
-            "url":"controller.php",
-            "data":{
-                "log_num": N,
-                "log_len": log_len,
-                "log_diam": log_diam,
-                "log_val": log_val
-            },
-            "dataType":'json',
-            "success":function(data){
-                //alert('!!!');
-                errorMessages(data.message);
-
-
-            }
-        });
+        //$.ajax({
+        //    "type":"post",
+        //    "url":"controller.php",
+        //    "data":{
+        //        "log_num": N,
+        //        "log_len": log_len,
+        //        "log_diam": log_diam,
+        //        "log_val": log_val
+        //    },
+        //    "dataType":'json',
+        //    "success":function(data){
+        //        //alert('!!!');
+        //        errorMessages(data.message);
+        //
+        //
+        //    }
+        //});
         //конец отправки данных на сервер
         //********************************
 
