@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ЛЕС</title>
+    <title>ЛЕС 2</title>
     <!-- [favicon] begin -->
     <link rel="shortcut icon" type="image/x-icon" href="img/el.jpg" />
     <link rel="icon" type="image/x-icon" href="img/el.jpg" />
@@ -29,6 +29,75 @@
       <div class="row">
 
         <div class="wrapper" id="wrapper">
+            <!--НАЧАЛО ДАННЫЕ КОНТЕЙНЕРА-->
+            <div class="table-responsive container-data">
+                <button id="show_cont" class="btn btn-default">
+                    <h3>Данные контейнера</h3>
+                </button>
+                <table class="table table-bordered table-container-data">
+                    <tr>
+                        <td>№</td>
+                        <td>
+                            <input type="text" class="form-control" id="cont-num" placeholder="№ контейнера">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Линия</td>
+                        <td>
+                            <select class="form-control" id="cont-line">
+                                <option value="empty"></option>
+                                <option value="SMA">SMA</option>
+                                <option value="MSC">MSC</option>
+                                <option value="MAERSK">MAERSK</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>GROSS WT.</td>
+                        <td>
+                            <input type="text" class="form-control" id="gross-wt">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>TARE WT.</td>
+                        <td>
+                            <input type="text" class="form-control" id="tare-wt">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>PAYLOAD</td>
+                        <td>
+                            <input type="text" class="form-control" id="pay-wt">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Грузил</td>
+                        <td>
+                            <!--<input type="text" class="form-control" id="emp-name" placeholder="Фамилия">-->
+                            <select class="form-control" id="emp-name" placeholder="Фамилия">
+                                <option value="empty"></option>
+                                <option value="Паламарчук">Паламарчук</option>
+                                <option value="Гульчак">Гульчак</option>
+                                <option value="Радов">Радов</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button id="save_cont" class="btn btn-default">
+                                СОХРАНИТЬ
+                            </button>
+                        </td>
+                        <td>
+                            <button id="reset_cont" class="btn btn-default">
+                                ОЧИСТИТЬ
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div><!-- .container-data -->
+            <!--КОНЕЦ ДАННЫЕ КОНТЕЙНЕРА-->
+
 
             <!--НАЧАЛО МЕЛКОДРЕВА-->
             <div class="table-responsive melcodrev">
@@ -196,21 +265,36 @@
             </div><!-- .table-responsive -->
             <!--КОНЕЦ ВЫВОДА ВСЕЙ ЗАГРУЗКИ-->
 
-            <!--НАЧАЛО ПЕРЕХОДА К НОВОМУ КОНТЕЙНЕРУ-->
-            <div class="next-cont">
-                <button id="next-cont" class="btn btn-default" onClick="event.preventDefault();">
-                    Новый контейнер
-                </button>
-            </div><!-- .next-cont-->
-            <!--КОНЕЦ ПЕРЕХОДА К НОВОМУ КОНТЕЙНЕРУ-->
-            <br>
-            <!--НАЧАЛО ВКЛЮЧИТЬ МЕЛКОДРЕВ-->
-            <div class="show-melcodrev">
-                <button id="switch-on-melcodrev" class="btn btn-default">
-                    Мелкодрев
-                </button>
-            </div><!-- .next-cont-->
-            <!--КОНЕЦ ВКЛЮЧИТЬ МЕЛКОДРЕВ-->
+
+            <ul class="nav nav-pills nav-stacked">
+                <li>
+                    <!--НАЧАЛО СИНХРОНИЗАЦИИ-->
+                    <div class="sinhro">
+                        <button id="sinhro" class="btn btn-default">
+                            СИНХРОНИЗИРОВАТЬ
+                        </button>
+                    </div><!-- .next-cont-->
+                    <!--КОНЕЦ СИНХРОНИЗАЦИИ-->
+                </li>
+                <li>
+                    <!--НАЧАЛО ПЕРЕХОДА К НОВОМУ КОНТЕЙНЕРУ-->
+                    <div class="next-cont">
+                        <button id="next-cont" class="btn btn-default" onClick="event.preventDefault();">
+                            Новый контейнер
+                        </button>
+                    </div><!-- .next-cont-->
+                    <!--КОНЕЦ ПЕРЕХОДА К НОВОМУ КОНТЕЙНЕРУ-->
+                </li>
+                <li>
+                    <!--НАЧАЛО ВКЛЮЧИТЬ МЕЛКОДРЕВ-->
+                    <div class="show-melcodrev">
+                        <button id="switch-on-melcodrev" class="btn btn-default">
+                            Мелкодрев
+                        </button>
+                    </div><!-- .next-cont-->
+                    <!--КОНЕЦ ВКЛЮЧИТЬ МЕЛКОДРЕВ-->
+                </li>
+            </ul>
 
             <div class="mesages_ajax">
 
@@ -229,6 +313,38 @@
 
   </div><!-- .container -->
 
+  <!--<nav class="navbar navbar-default navbar-fixed-top" role="navigation">-->
+      <!--<div class="container-fluid">-->
+          <!--&lt;!&ndash; Brand and toggle get grouped for better mobile display &ndash;&gt;-->
+          <!--<div class="navbar-header">-->
+              <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">-->
+                  <!--<span class="sr-only">Toggle navigation</span>-->
+                  <!--<span class="icon-bar"></span>-->
+                  <!--<span class="icon-bar"></span>-->
+                  <!--<span class="icon-bar"></span>-->
+              <!--</button>-->
+              <!--<a class="navbar-brand" href="#">LES.2</a>-->
+          <!--</div>-->
+
+          <!--&lt;!&ndash; Collect the nav links, forms, and other content for toggling &ndash;&gt;-->
+          <!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
+              <!--<ul class="nav navbar-nav">-->
+                  <!--<li class="active">-->
+                      <!--&lt;!&ndash;НАЧАЛО СИНХРОНИЗАЦИИ&ndash;&gt;-->
+                      <!--<div class="sinhro">-->
+                          <!--<button id="sinhro" class="btn btn-default">-->
+                              <!--СИНХРОНИЗИРОВАТЬ-->
+                          <!--</button>-->
+                      <!--</div>&lt;!&ndash; .next-cont&ndash;&gt;-->
+                      <!--&lt;!&ndash;КОНЕЦ СИНХРОНИЗАЦИИ&ndash;&gt;-->
+                  <!--</li>-->
+                  <!--<li>-->
+                      <!--<a href="#">Ссылка</a>-->
+                  <!--</li>-->
+              <!--</ul>-->
+          <!--</div>&lt;!&ndash; /.navbar-collapse &ndash;&gt;-->
+      <!--</div>&lt;!&ndash; /.container-fluid &ndash;&gt;-->
+  <!--</nav>-->
   <!--НАЧАЛО КЛАВИАТУРЫ-->
   <!--<div class="table-responsive numbers hidden-lg hidden-md hidden-sm">-->
   <div class="table-responsive numbers">

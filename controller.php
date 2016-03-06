@@ -1,17 +1,23 @@
 <?php
-////unset ($_SESSION['data']);
+session_start();
+// запрет прямого обращения
+define('LES', TRUE);
 //session_destroy();
-$num = $_POST['log_num'];
-$_SESSION['data'][$num] = [
-    'len'=>$_POST['log_len'],
-    'diam'=>$_POST['log_diam'],
-    'val'=>$_POST['log_val']
-];
+//unset ($_SESSION);
 
-$message = "Данные сохранены";
-$res = [];
-$res = [
-    "message" => $message,
-];
-echo json_encode($res);
-exit;
+include_once 'config.php';
+include_once FUNCTIONS;
+include_once MODEL;
+
+//данные всей загрузки
+if($_POST['save_loading'] == 'yes')
+{
+    //$_SESSION = $_POST['DATA'];
+    $LOADING = [];
+    $LOADING = $_POST['DATA'];
+    saveLoading($LOADING);
+
+
+    //ответ с сервера на ajax запрос
+    sendRespons();
+}//данные всей загрузки

@@ -5,6 +5,19 @@
 //localStorage.clear();
 //showWebStoreData();
 
+//ДАННЫЕ ПО КОНТЕЙНЕРУ
+var contNum   = '';
+var contLine  = '';
+var contGross = '';
+var contTare  = '';
+var contPay   = '';
+
+//НОМЕР КОНТЕЙНЕРА В БД
+var partiaID;
+
+//ДАННЫЕ ПО РАБОТНИКУ(ФИО)
+var Employer = '';
+
 //Длина загружаемого леса
 var Len = 0;
 
@@ -55,6 +68,23 @@ if( localStorage.getItem("storeN")
 {
     errorMessages('Данные восстановлены');
     console.log('!!!В ХРАНЛИЩЕ ЕСТЬ СОХРАНЕННЫЕ ДАННЫЕ!!!');
+
+    //сохраненные данные контейнера
+    contNum = localStorage.getItem('contNum');
+    contLine = localStorage.getItem('contLine');
+    contGross = localStorage.getItem('contGross');
+    contTare = localStorage.getItem('contTare');
+    contPay = localStorage.getItem('contPay');
+    Employer = localStorage.getItem('Employer');
+    $('#cont-num').val(contNum);
+    $('#cont-line').val(contLine);
+    $('#gross-wt').val(contGross);
+    $('#tare-wt').val(contTare);
+    $('#pay-wt').val(contPay);
+    $('#emp-name').val(Employer);
+
+    //заполнение из хранилища массива загрузки
+    console.log('В массиве: '+localStorage.getItem("storeN"));
     var loaded_size = parseInt(localStorage.getItem("storeN"));
     for(var i = 1; i <= loaded_size; i++)
     {
@@ -162,6 +192,7 @@ function allReset()
     restVal = 0;
     $('#max-val-rest').val($('#max-val').val())
                       .css("backgroundColor","white");
+    resetContainerData();
 }
 
 //Сброс всех параметров
@@ -240,9 +271,60 @@ function totalRest()
     restVal = maxV - totalV;
     $('#max-val-rest').val(restVal);
 }
+
+function resetContainerData()
+{
+    contNum   = $('#cont-num').val('');
+    contLine  = $('#cont-line').val('');
+    contGross = $('#gross-wt').val('');
+    contTare  = $('#tare-wt').val('');
+    contPay   = $('#pay-wt').val('');
+    Employer  = $('#emp-name').val('');
+    localStorage.setItem('contNum',  0);
+    localStorage.setItem('contLine', 0);
+    localStorage.setItem('contGross',0);
+    localStorage.setItem('contTare', 0);
+    localStorage.setItem('contPay',  0);
+    localStorage.setItem('Employer', 0);
+
+}
 //************************************************
 //*******ПРОГРАММА********************************
 //************************************************
+//ПОКАЗАТЬ/СКРЫТЬ ДАННЫЕ КОНТЕЙНЕРА
+$('#show_cont').click(function(){
+    $( ".table-container-data" ).slideToggle() ;
+    return false;
+});
+
+//Сброс введенных данных контейнера
+$('#reset_cont').click(function(){
+    resetContainerData();
+    return false;
+});
+
+//ДАННЫЕ КОНТЕЙНЕРА
+$('#save_cont').click(function() {
+    //получение
+    localStorage.setItem('contNum',$('#cont-num').val());
+    localStorage.setItem('contLine',$('#cont-line').val());
+    localStorage.setItem('contGross',$('#gross-wt').val());
+    localStorage.setItem('contTare',$('#tare-wt').val());
+    localStorage.setItem('contPay',$('#pay-wt').val());
+    localStorage.setItem('Employer',$('#emp-name').val());
+
+    //verification
+
+    contNum   = localStorage.getItem('contNum');
+    contLine  = localStorage.getItem('contLine');
+    contGross = localStorage.getItem('contGross');
+    contTare  = localStorage.getItem('contTare');
+    contPay   = localStorage.getItem('contPay');
+    Employer  = localStorage.getItem('Employer');
+
+});
+
+//******************************************************
 
 //Выбор длины загружаемого леса
 $('.choose-len-btn').click(function(){
@@ -416,25 +498,6 @@ $('#enter-diam').click(function(){
         var log_diam = D;
         var log_val = V;
 
-        //$.ajax({
-        //    "type":"post",
-        //    "url":"controller.php",
-        //    "data":{
-        //        "log_num": N,
-        //        "log_len": log_len,
-        //        "log_diam": log_diam,
-        //        "log_val": log_val
-        //    },
-        //    "dataType":'json',
-        //    "success":function(data){
-        //        //alert('!!!');
-        //        errorMessages(data.message);
-        //
-        //
-        //    }
-        //});
-        //конец отправки данных на сервер
-        //********************************
 
         //********************************
         //WEB ХРАНИЛИЩЕ
@@ -509,10 +572,21 @@ $('#delete').click(function() {
             //находим последний элемент и обнуляем его
             N--;
 
-            Partia[N]['L'] = 0;
+            Partia[N]['L']    = 0;
             Partia[N]['Diam'] = 0;
-            Partia[N]['Val'] = 0;
-
+            Partia[N]['Val']  = 0;
+            //очищаем WEB ХРАНИЛИЩЕ
+            storeNum =  'Num'+N;
+            storeLen =  'Len'+N;
+            storeDiam = 'Diam'+N;
+            storeVal =  'Val'+N;
+            localStorage.setItem(storeNum,'');
+            localStorage.setItem(storeLen,'');
+            localStorage.setItem(storeDiam,'');
+            localStorage.setItem(storeVal,'');
+            //сдвиг назад счетчика web-хранилища
+            localStorage.setItem("storeN",N-1);
+            console.log(localStorage.getItem("storeN"));
             //выводим новый номер бревна
             $('.num').text('№ ' + N );
 
@@ -583,7 +657,9 @@ $('.sos-btn').click(function(){
 
 //Новый контейнер
 $('#next-cont').click(function(){
-    result = confirm('Все данные будут удалены. Продолжить?');
+    result = confirm('Все данные будут удалены!!!\n' +
+        'Не забудьте синхронизироваться!\n' +
+        'Продолжить?');
     if(result)
     {
 
@@ -681,6 +757,68 @@ $('#diam12, #diam14, #diam16, #diam18').keyup(function(){
         parseInt( $('#val18').val())
     );
 
+});
+//******************************************************
+//СИНХРОНИЗАЦИЯ
+$('#sinhro').click(function() {
+    result = confirm('Данные будут отправлены в хранилище. Продолжить?');
+    if(result)
+    {
+        contNum   = localStorage.getItem('contNum');
+        contLine  = localStorage.getItem('contLine');
+        contGross = localStorage.getItem('contGross');
+        contTare  = localStorage.getItem('contTare');
+        contPay   = localStorage.getItem('contPay');
+        Employer  = localStorage.getItem('Employer');
+
+        //Отправка данных только с заполненным контейнером
+        if(
+            contNum   &&
+            contLine  &&
+            contGross &&
+            contTare  &&
+            contPay   &&
+            Employer
+        )
+        {
+
+            var DATA = {
+                "contNum":   contNum,
+                "contLine":  contLine,
+                "contGross": contGross,
+                "contTare":  contTare,
+                "contPay":   contPay,
+                "Employer":  Employer,
+                "Partia":    Partia
+            };
+
+            $.ajax({
+                "type": "post",
+                //"url":"http://les.radov.xyz/controller.php",
+                "url": "controller.php",
+                "data": {
+                    "save_loading": "yes",
+                    "DATA": DATA
+                },
+                "dataType": 'json',
+                "success": function (data) {
+                    //alert('!!!');
+                    errorMessages(data.message);
+                    //errorMessages('testvar = ' + data.testvar);
+
+
+                }
+            });
+            //конец отправки данных на сервер
+        }
+        else
+        {
+            errorMessages('Введены не все данные контейнера');
+        }
+
+    }
+
+    return false;
 });
 
 //************************************************

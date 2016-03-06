@@ -1,14 +1,7 @@
 <?php
-session_start();
-
-function print_arr($arr)
-{
-    echo '<pre>';
-    print_r($arr);
-    echo '</pre>';
-}
-
-//print_arr($_SESSION);
+require_once 'controller.php';
+echo '$_SESSION:<br>';
+print_arr($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -49,18 +42,22 @@ function print_arr($arr)
     </tr>
 
     <?php
-        $i = count($_SESSION['data']);
-        $temp_arr = array_reverse($_SESSION['data']);
-        $totalV = 0;
-        foreach($temp_arr as $data):?>
-    <tr>
-        <td><?=$i--;?></td>
-        <td><?=$data['len'];?></td>
-        <td><?=$data['diam'];?></td>
-        <td><?=$data['val'];?></td>
-        <td><?=$totalV += $data['val'];?></td>
-    </tr>
-    <?php endforeach;?>
+//        $i = count($_SESSION['data']);
+//        echo '$i = '.$i;
+//        $temp_arr = array_reverse($_SESSION['data']);
+//        echo '$temp_arr:';
+//        print_arr($temp_arr);
+//        $totalV = 0;
+//        print_arr($data);
+//        foreach($temp_arr as $data):?>
+<!--            <tr>-->
+<!--                <td>--><?//=$i--;?><!--</td>-->
+<!--                <td>--><?//=$data['len'];?><!--</td>-->
+<!--                <td>--><?//=$data['diam'];?><!--</td>-->
+<!--                <td>--><?//=$data['val'];?><!--</td>-->
+<!--                <td>--><?//=$totalV += $data['val'];?><!--</td>-->
+<!--            </tr>-->
+<!--        --><?php //endforeach;?>
 
 </table>
 
@@ -69,7 +66,6 @@ function print_arr($arr)
     <script src="js/jquery-1.12.0.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/drova.js"></script>
     <script>
 
 
