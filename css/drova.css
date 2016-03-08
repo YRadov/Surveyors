@@ -137,6 +137,9 @@ label {
 .table {
   text-align: center;
 }
+.table th {
+  text-align: center;
+}
 .table-button {
   background-color: #28b4cc;
 }
@@ -265,4 +268,8 @@ label {
   background-color: white;
   padding: 10px 0 20px;
   text-align: center;
+}
+.container-one-admin {
+  margin: 0 auto;
+  width: 50%;
 }

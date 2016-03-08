@@ -95,7 +95,7 @@ if( localStorage.getItem("storeN")
 
         //восстанавливаем данные из хранилища
         Partia[i]= {
-            "L"   : parseInt(localStorage.getItem(storeLen)),
+            "L"   : parseFloat(localStorage.getItem(storeLen)),
             "Diam": parseInt(localStorage.getItem(storeDiam)),
             "Val" : parseInt(localStorage.getItem(storeVal))
         };
@@ -783,13 +783,13 @@ $('#sinhro').click(function() {
         {
 
             var DATA = {
-                "contNum":   contNum,
-                "contLine":  contLine,
+                "contNum"  : contNum,
+                "contLine" : contLine,
                 "contGross": contGross,
-                "contTare":  contTare,
-                "contPay":   contPay,
-                "Employer":  Employer,
-                "Partia":    Partia
+                "contTare" : contTare,
+                "contPay"  : contPay,
+                "Employer" : Employer,
+                "Partia"   : Partia
             };
 
             $.ajax({
