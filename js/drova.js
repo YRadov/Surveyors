@@ -805,7 +805,6 @@ $('#sinhro').click(function() {
 
             $.ajax({
                 "type": "post",
-                //"url":"http://les.radov.xyz/controller.php",
                 "url": "controller.php",
                 "data": {
                     "save_loading": "yes",
@@ -813,11 +812,7 @@ $('#sinhro').click(function() {
                 },
                 "dataType": 'json',
                 "success": function (data) {
-                    //alert('!!!');
                     errorMessages(data.message);
-                    //errorMessages('testvar = ' + data.testvar);
-
-
                 }
             });
             //конец отправки данных на сервер
@@ -835,16 +830,6 @@ $('#sinhro').click(function() {
 //************************************************
 //*******РАЗНОЕ***********************************
 //************************************************
-
-//запрет перезагрузки страницы
-// location.reload(function(){
-// 	return false;
-// }); 
-// windows.onload(function(){
-// 	return false;
-// }); 
-
-
 //Скролл вверх
 $('.to-top').click(function () {
     $('body,html').animate({
