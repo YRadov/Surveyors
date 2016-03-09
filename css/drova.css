@@ -17,6 +17,9 @@ body {
 .cliarfix:after {
   clear: both;
 }
+h1 {
+  text-align: center;
+}
 #all-lag {
   font-size: 20px;
 }
@@ -270,6 +273,5 @@ label {
   text-align: center;
 }
 .container-one-admin {
-  margin: 0 auto;
   width: 50%;
 }

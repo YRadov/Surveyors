@@ -12,8 +12,8 @@ var contGross = '';
 var contTare  = '';
 var contPay   = '';
 
-//НОМЕР КОНТЕЙНЕРА В БД
-var partiaID;
+//ПОРОДА ДЕРЕВА
+var contPoroda = '';
 
 //ДАННЫЕ ПО РАБОТНИКУ(ФИО)
 var Employer = '';
@@ -75,12 +75,14 @@ if( localStorage.getItem("storeN")
     contGross = localStorage.getItem('contGross');
     contTare = localStorage.getItem('contTare');
     contPay = localStorage.getItem('contPay');
+    contPoroda = localStorage.getItem('contPoroda');
     Employer = localStorage.getItem('Employer');
     $('#cont-num').val(contNum);
     $('#cont-line').val(contLine);
     $('#gross-wt').val(contGross);
     $('#tare-wt').val(contTare);
     $('#pay-wt').val(contPay);
+    $('#cont-poroda').val(contPoroda);
     $('#emp-name').val(Employer);
 
     //заполнение из хранилища массива загрузки
@@ -279,12 +281,14 @@ function resetContainerData()
     contGross = $('#gross-wt').val('');
     contTare  = $('#tare-wt').val('');
     contPay   = $('#pay-wt').val('');
+    contPoroda   = $('#cont-poroda').val('');
     Employer  = $('#emp-name').val('');
     localStorage.setItem('contNum',  0);
     localStorage.setItem('contLine', 0);
     localStorage.setItem('contGross',0);
     localStorage.setItem('contTare', 0);
     localStorage.setItem('contPay',  0);
+    localStorage.setItem('contPoroda',0);
     localStorage.setItem('Employer', 0);
 
 }
@@ -311,6 +315,7 @@ $('#save_cont').click(function() {
     localStorage.setItem('contGross',$('#gross-wt').val());
     localStorage.setItem('contTare',$('#tare-wt').val());
     localStorage.setItem('contPay',$('#pay-wt').val());
+    localStorage.setItem('contPoroda',$('#cont-poroda').val());
     localStorage.setItem('Employer',$('#emp-name').val());
 
     //verification
@@ -320,7 +325,11 @@ $('#save_cont').click(function() {
     contGross = localStorage.getItem('contGross');
     contTare  = localStorage.getItem('contTare');
     contPay   = localStorage.getItem('contPay');
+    contPoroda = localStorage.getItem('contPoroda');
     Employer  = localStorage.getItem('Employer');
+
+    //alert (contPoroda);
+
 
 });
 
@@ -769,15 +778,16 @@ $('#sinhro').click(function() {
         contGross = localStorage.getItem('contGross');
         contTare  = localStorage.getItem('contTare');
         contPay   = localStorage.getItem('contPay');
+        contPoroda = localStorage.getItem('contPoroda');
         Employer  = localStorage.getItem('Employer');
-
         //Отправка данных только с заполненным контейнером
         if(
-            contNum   &&
-            contLine  &&
-            contGross &&
-            contTare  &&
-            contPay   &&
+            contNum    &&
+            contLine   &&
+            contGross  &&
+            contTare   &&
+            contPay    &&
+            contPoroda &&
             Employer
         )
         {
@@ -788,6 +798,7 @@ $('#sinhro').click(function() {
                 "contGross": contGross,
                 "contTare" : contTare,
                 "contPay"  : contPay,
+                "contPoroda" : contPoroda,
                 "Employer" : Employer,
                 "Partia"   : Partia
             };

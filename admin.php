@@ -1,6 +1,6 @@
 <?php
 require_once 'controller.php';
-echo '$_SESSION:<br>';
+//echo '$_SESSION:<br>';
 print_arr($_SESSION);
 ?>
 <!DOCTYPE html>
@@ -29,8 +29,9 @@ print_arr($_SESSION);
     <![endif]-->
 </head>
 <body>
+<div class="container">
 <h1>АДМИН-ПАНЕЛЬ<h1>
-<h3>Текущие загруженные контейнеры<h3>
+<h2>Все загруженные контейнеры</h2>
 <table class="table table-res table-striped table-bordered">
     <tr class="tab-header">
         <th>№</th>
@@ -38,12 +39,12 @@ print_arr($_SESSION);
         <th>Линия</th>
         <th>Дата загрузки</th>
         <th>Фамилия</th>
-        <th>id в БД</th>
+        <th>Подробно</th>
     </tr>
 
     <?php
     $i=0;
-        foreach($_SESSION['current_loadings'] as $key):
+        foreach($_SESSION['all_loadings'] as $key):
             $i++;?>
 
             <tr>
@@ -52,15 +53,30 @@ print_arr($_SESSION);
                 <td><?=$key['line'];?></td>
                 <td><?=$key['date'];?></td>
                 <td><?=$key['name'];?></td>
-                <td><?=$key['id'];?></td>
+                <td>
+                    <button id="<?=$key['id'];?>" class="btn btn-primary btn-view">
+                        ПОКАЗАТЬ
+                    </button>
+                </td>
             </tr>
         <?php endforeach;?>
 
 </table>
-<h3>Данные загрузки<h3>
+
+<?php if($_SESSION['one_loading'][0]['number']):?>
+<div class="container one-cont">
+        <h2>Подробно контейнер № <?=$_SESSION['one_loading'][0]['number'];?></h2>
         <!--НАЧАЛО ДАННЫЕ КОНТЕЙНЕРА-->
-        <div class="table-responsive container-data container-one-admin">
+
+            <div class="table-responsive container-data container-one-admin">
             <table class="table table-bordered table-container-data">
+                <tr>
+                    <td colspan="2">
+                        <button class="btn btn-success reset-cont">
+                            ЗАКРЫТЬ
+                        </button>
+                    </td>
+                </tr>
                 <tr>
                     <td>Дата</td>
                     <td>
@@ -98,6 +114,12 @@ print_arr($_SESSION);
                     </td>
                 </tr>
                 <tr>
+                    <td>ПОРОДА</td>
+                    <td>
+                        <?=$_SESSION['one_loading'][0]['poroda'];?>
+                    </td>
+                </tr>
+                <tr>
                     <td>Грузил</td>
                     <td>
                         <?=$_SESSION['one_loading'][0]['name'];?>
@@ -114,7 +136,6 @@ print_arr($_SESSION);
         <th>Объем бревна, см3</th>
         <th>Общий объем, см3</th>
     </tr>
-
     <?php
     $totalV = 0;
     $i = 0;
@@ -124,32 +145,40 @@ print_arr($_SESSION);
             $i++;
             continue;
         }?>
+        <?php if($key['len']):?>
         <tr>
             <td><?=$key['num'];?></td>
-            <td><?=$key['len'];?></td>
-            <td><?=$key['diam'];?></td>
-            <td><?=$key['val'];?></td>
-            <td><?=$totalV += $key['val'];?></td>
+            <td><?=$key['len'];?> м</td>
+            <td><?=$key['diam'];?> см</td>
+            <td><?=$key['val'];?> см3</td>
+            <td><?=$totalV += $key['val'];?> см3</td>
         </tr>
-    <?php $i++; endforeach;?>
+    <?php $i++; endif; endforeach;?>
 
     <tr>
         <td><b>Всего бревен</b></td>
         <td><b><?=$i-1;?> шт.</b></td>
-        <td colspan="2"><b>Общий объем</b></td>
+        <td>
+            <button class="btn btn-success reset-cont">
+                ЗАКРЫТЬ
+            </button>
+        </td>
+        <td><b>Общий объем</b></td>
         <td><b><?=$totalV;?> см3</b></td>
     </tr>
 
 </table>
+</div><!-- .container-->
+<?php endif;?>
 
+</div><!-- .container -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
-    <script src="js/jquery-1.12.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!--    <script src="js/jquery-1.12.0.min.js"></script>-->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/admin.js"></script>
     <script>
-
-
     </script>
 
 </body>

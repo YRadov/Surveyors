@@ -20,6 +20,7 @@ function saveLoading($LOADING)
     $tare_weight    = $LOADING['contTare'];
     $payload_weight = $LOADING['contPay'];
     $line           = $LOADING['contLine'];
+    $poroda         = $LOADING['contPoroda'];
     $employer       = $LOADING['Employer'];
 
 
@@ -29,25 +30,25 @@ function saveLoading($LOADING)
                             tare_weight,
                             payload_weight,
                             line,
+                            poroda,
                             employer_id
                             )
-             VALUES (?, ?, ?, ?, ?, ?)";
-
+             VALUES (?, ?, ?, ?, ?, ?, ?)";
 
     /* создаем подготавливаемый запрос */
     $stmt = $mysqli->prepare($query);
 
     $stmt->bind_param(
-        'siiisi',
+        'siiissi',
             $number,
             $gross_weight,
             $tare_weight,
             $payload_weight,
             $line,
+            $poroda,
             $employer
     );
 
-    $_SESSION['container_id'] = 5;
 
       /* выполнение подготовленного выражения  */
       $stmt->execute();
@@ -82,7 +83,7 @@ function saveLoading($LOADING)
      foreach($LOADING['Partia'] as $key)
      {
          //нулевой элемент пропускаем
-         if($key == 0)
+         if($key == 0 || $key['L'] == 0)
          {
              $i++;
              continue;
@@ -115,7 +116,8 @@ function getCurrentLoadings()
 
     //текущая дата - 1 день
     $yesterday_date = date("Y-m-d", time()-24*60*60);
-    $query = "SELECT c.id, c.number, c.line, c.date, e.name
+    $query = "SELECT c.id, c.number, c.line, c.poroda, e.name,
+                    DATE_FORMAT(c.date, '%e/%m/%Y') as date
               FROM containers c, emploers e
               WHERE e.id = c.employer_id
               AND c.date > '{$yesterday_date}'
@@ -143,7 +145,8 @@ function getAllLoadings()
 {
     global $mysqli;
 
-    $query = "SELECT c.id, c.number, c.line, c.date, e.name
+    $query = "SELECT c.id, c.number, c.line, c.poroda,
+                      DATE_FORMAT(c.date, '%e/%m/%Y') as date, e.name
               FROM containers c, emploers e
               WHERE e.id = c.employer_id
               ORDER BY c.date DESC ";
@@ -171,7 +174,8 @@ function getOneLoading($id)
     //данные контейнера
     $query = "SELECT c.id, c.number, c.gross_weight,
                       c.tare_weight, c.payload_weight,
-                      c.line, c.date, e.name
+                      c.line, c.poroda,e.name,
+                      DATE_FORMAT(c.date, '%e/%m/%Y') as date
               FROM containers c, emploers e
               WHERE c.id = $id
               AND e.id = c.employer_id";
