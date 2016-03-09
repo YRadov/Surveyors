@@ -24,10 +24,10 @@ define('PASS', '');
 define('DB', 'les2');
 
 // соль
-define('SOLT', '!les2dTm!?mjles2!');
+define('SOLT', '');
 
 // email администратора
-define('ADMIN_EMAIL', 'radov.yuriy@ukr.net');
+define('ADMIN_EMAIL', '');
 
 
 //подключение к базе данных
