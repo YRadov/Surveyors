@@ -1,377 +1,408 @@
-*{
+* {
   margin: 0;
-  padding: 0;
+  padding: 0
 }
 
-body{
+body {
   background-color: #1b6d85;
-  position: relative;
+  position: relative
 }
 
-.btn-default
-{
-  width: 100%;
+.btn-default {
+  width: 100%
 }
 
-.cliarfix:before, .cliarfix:after
-{
+.cliarfix:before, .cliarfix:after {
   content: " ";
-  display: table;
-}
-.cliarfix:after
-{
-  clear: both;
+  display: table
 }
 
-h1{text-align: center;}
-//****************************************
-#all-lag
-{
-  font-size: 20px;
+.cliarfix:after {
+  clear: both
 }
 
-#btn-text-enter
-{
-  color: red;
+h1 {
+  text-align: center
+}
+
+#all-lag {
+  font-size: 20px
+}
+
+.aver-diam {
+  border: 1px solid #fff;
+  border-radius: 3px;
+  color: #fff;
+  background-color: #008000;
+  font-size: 16px;
+  padding: 0 5px;
+  height: 44px
+}
+
+#btn-text-enter {
+  color: white;
   position: absolute;
   left: 40%;
   top: 0;
-  font-weight: bold;
-}//#btn-text-enter
+  font-weight: bold
+}
 
-.choose-len
-{
+.choose-len {
   font-size: 25px;
-  padding: 0 20px;
-
-  h3{
-    margin-top: 0;
-  }
-  button{
-    border-radius: 5px;
-    width: 80px;
-  }
-
-}//choose-len
-
-.choose-len-wrap
-{
-  text-align: center;
-  i{
-    color: red;
-    opacity: 0;
-  }
-
-}//.choose-len-wrap
-
-#delete
-{
-
-  color: red;
+  padding: 0 20px
 }
 
-#delete:hover
-{
-  cursor: pointer;
+.choose-len h3 {
+  margin-top: 0
 }
 
-#enter-diam
-{
-  background-color: transparent;
-  border: none;
+.choose-len button {
+  border-radius: 5px;
+  width: 80px
 }
 
-.error
-{
-  background-color: white;
-  border: 3px solid red;
-  color: red;
+.choose-len-wrap {
+  text-align: center
+}
+
+.choose-len-wrap i {
+  color: #f00;
+  opacity: 0
+}
+
+#delete {
+  color: #f00
+}
+
+#delete:hover {
+  cursor: pointer
+}
+
+#enter-diam {
+  background-color:red;
+}
+
+.error {
+  background-color: #fff;
+  border: 3px solid #f00;
+  color: #f00;
   display: none;
   font-size: 20px;
   width: 300px;
   position: fixed;
   text-align: center;
-  top:20px;
-  z-index: 999;
+  top: 20px;
+  z-index: 999
 }
 
-footer
-{
-  background-color: #222222;
-  color: white;
+footer {
+  background-color: #222;
+  color: #fff;
   height: 50px;
   line-height: 50px;
   margin: 30px -10px -10px -10px;
   padding: 10px;
-  position: relative;
+  position: relative
+}
 
-  a{color: white;}
-  a:hover{color: red;}
-  i{
-    color: white;
-    position: absolute;
-    right: 20px;
-  }
-  i:hover{
-    color: red;
-    cursor: pointer;
-  }
+footer a {
+  color: #fff
+}
 
-}//footer
+footer a:hover {
+  color: #f00
+}
 
-h3{
+footer i {
+  color: #fff;
+  position: absolute;
+  right: 20px
+}
+
+footer i:hover {
+  color: #f00;
+  cursor: pointer
+}
+
+h3 {
   margin: 0;
-  text-align: center;
+  text-align: center
 }
 
-hr{
-  margin: 10px auto;
-}
-label
-{
-  margin-right: 20px;
+hr {
+  margin: 10px auto
 }
 
-.left{float: left;}
-
-.max-val, .max-val-rest
-{
-  text-align: center;
+label {
+  margin-right: 20px
 }
 
-.max-val
-{
-  font-size: 16px;
+.left {
+  float: left
 }
 
-.next-cont
-{
+.max-val, .max-val-rest {
+  text-align: center
+}
+
+.max-val {
+  font-size: 16px
+}
+
+.next-cont {
   margin-top: 20px;
   text-align: center;
-  position: relative;
+  position: relative
 }
 
-.num
-{
+.num {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 20px
 }
 
-.param{
+.param {
   display: inline-block;
-  font-size: 20px;
+  font-size: 16px;
+  text-align: center;
   width: 90px;
 }
-.right{float: right;}
 
-.submit{
-  text-align: center;
-  button{
-    font-size: 20px;
-  }
-}
 
-.table
-{
-  text-align: center;
-  th{
-    text-align: center;
-  }
-}
-
-.table-button
-{
-  background-color: #28b4cc;
-}
-
-.tab-header
-{
-  background-color: #ccc !important;
-}
-
-.total-val
-{
-  text-align: center;
-
-  #total_val{
-    background-color: green;
-    color: white;
-  }
-  input{
-    width: 100%;
-    text-align: center;
-  }
-}
-
-.total-val-top
-{
+.param-aver {
   display: inline-block;
-  margin: 5px auto;
-  width: 140px;
-
- #total_val_top{
-   color: white;
-   background-color: green;
-   font-size: 16px;
-   padding: 0;
-   height: 20px;
- }
-
-}//.total-val-top
-
-#val{
+  font-size: 16px;
+  text-align: center;
   width: 110px;
 }
 
-.well-done
-{
-  background-color: white;
-  border: 3px solid green;
-  color: green;
-  display: none;
+.param-md {
+  display: inline-block;
   font-size: 20px;
-  position: fixed;
+  text-align: center;
+  width: 90px
 }
 
-.wrapper
-{
-background-color: #28b4cc;
+.right {
+  float: right
+}
+
+.submit {
+  text-align: center
+}
+
+.submit button {
+  font-size: 20px
+}
+
+.table {
+  text-align: center
+}
+
+.table th {
+  text-align: center
+}
+
+.table-button {
+  background-color: #28b4cc
+}
+
+.tab-header {
+  background-color: #ccc !important
+}
+
+.total-val {
+  text-align: center
+}
+
+.total-val #total_val {
+  background-color: #008000;
+  color: #fff
+}
+
+.total-val input {
+  width: 100%;
+  text-align: center
+}
+
+.total-val-top {
+  display: inline-block;
+  margin: 5px auto
+}
+
+.total-val-top #total_val_top {
+  color: #fff;
+  background-color: #008000;
+  font-size: 16px;
+  padding: 0;
+  height: 20px;
+  width: 100px
+}
+
+#val {
+  width: 110px
+}
+
+.well-done {
+  background-color: #fff;
+  border: 3px solid #008000;
+  color: #008000;
+  display: none;
+  font-size: 20px;
+  position: fixed
+}
+
+.wrapper {
+  background-color: #28b4cc;
   border: 2px solid #ccc;
   border-radius: 5px;
   margin: 0 auto;
   padding: 10px;
-  max-width: 320px;
+  max-width: 320px
 }
-//************************************************
-//���������� ������
 
-.numbers
-{
-  background-color: white;
+.numbers {
+  background-color: #fff;
   display: none;
   position: fixed;
-  bottom: -15px;
-
-
-  .del  {
-    color: red;
-  }
-  .del:hover  {
-    color: red;
-  }
-
-  .ok  {
-    color: green;
-  }
-  .ok:hover  {
-    color: green;
-  }
-
-  td{
-    font-size: 30px;
-    padding: 5px;
-  }
-  td:hover{
-    background-color: #999;
-    color: white;
-    cursor: pointer;
-  }
-
-}//.numbers
-//���������� �����
-//*************************************************************
-//������������� ����� ���� ������
-.show-sos
-{
-  text-align: center;
+  bottom: -15px
 }
 
-.sos-wrapper
-{
+.numbers .del {
+  color: #f00
+}
 
+.numbers .del:hover {
+  color: #f00
+}
+
+.numbers .ok {
+  color: #008000
+}
+
+.numbers .ok:hover {
+  color: #008000
+}
+
+.numbers td {
+  font-size: 20px;
+  padding: 5px
+}
+
+.numbers td:hover {
+  background-color: #999;
+  color: #fff;
+  cursor: pointer
+}
+
+.show-sos {
+  text-align: center
+}
+
+.sos-wrapper {
   display: none;
-  position: relative;
-
-
-  .sos{
-    background-color: white;
-    text-align: center;
-    padding: 10px;
-    width: 300px;
-  }//.sos
-}//.sos-wrapper
-//������������� ����� ���� �����
-//*************************************************************
-//��������� ������
-.show-melcodrev
-{
-  margin-top: 20px;
-  text-align: center;
+  position: relative
 }
 
-.melcodrev
-{
-  background-color: white;
+.sos-wrapper .sos {
+  background-color: #fff;
+  text-align: center;
+  padding: 10px;
+  width: 300px
+}
+
+.show-melcodrev {
+  margin-top: 20px;
+  text-align: center
+}
+
+.melcodrev {
+  background-color: #fff;
+  display: none
+}
+
+.melcodrev .close-melcodrev {
+  background-color: #f00;
+  vertical-align: middle
+}
+
+.melcodrev .close-melcodrev .btn {
+  border: 5px solid #ccc;
+  color: #f00;
+  font-weight: bold
+}
+
+.melcodrev select {
+  font-size: 16px
+}
+
+.melcodrev select option {
+  text-align: center
+}
+
+.melcodrev td {
+  font-size: 20px
+}
+
+.sinhro {
+  margin-top: 20px;
+  text-align: center
+}
+
+.show-additional {
+  margin-top: 20px;
+  text-align: center
+}
+
+.container-data {
+  text-align: center
+}
+
+.container-data #show_cont {
+  margin-bottom: 10px
+}
+
+.container-data .table-container-data {
+  background-color: #fff;
+  padding: 10px 0 20px;
+  text-align: center;
   display: none;
-  //height: 700px;
-  //position: fixed;
-  //top: 0;
-
-  .close-melcodrev{
-    background-color: red;
-    vertical-align: middle;
-    .btn{
-      border: 5px solid #ccc;
-      color: red;
-      font-weight: bold;
-    }
-  }
-  select{
-    font-size: 20px;
-    option{
-      text-align: center;
-    }
-  }//select
-
-  td{
-    font-size: 20px;
-  }
-
-}//.melcodrev
-//��������� �����
-//*************************************************************
-//СИНХРОНИЗАЦИЯ
-.sinhro
-{
-  margin-top: 20px;
-  text-align: center;
 }
-//*************************************************************
-//ДАННЫЕ КОНТЕЙНЕРА НАЧАЛО
-.container-data
+
+.container-one-admin {
+  width: 50%
+}
+
+#row_up {
+  position: fixed;
+  bottom: 20px;
+  left: 20px
+}
+
+#row_up i {
+  color: #f00
+}
+
+#average-data .aver-val {
+  text-align: center
+}
+
+#average-data .aver-val #aver-val {
+  background-color: #008000;
+  color: #fff
+}
+
+#average-data .aver-val input {
+  width: 100%;
+  text-align: center
+}
+
+#average-data .aver-persent #aver-persent-4,
+#average-data .aver-persent #aver-persent-6,
+#average-data .aver-persent #aver-qty-4,
+#average-data .aver-persent #aver-qty-6,
+#average-data .aver-persent #aver-val-4,
+#average-data .aver-persent #aver-val-6
 {
-  text-align: center;
-
-  #show_cont{
-    margin-bottom: 10px;
-  }
-  .table-container-data{
-    background-color: white;
-    padding: 10px 0 20px;
-    text-align: center;
-  }
-
-}//.container-data
-//ДАННЫЕ КОНТЕЙНЕРА КОНЕЦ
-//*************************************************************
-//*************************************************************
-//ДАННЫЕ КОНТЕЙНЕРА В АДМИНКЕ
-.container-one-admin
-{
-  //margin: 0 auto;
-  width: 50%;
-}//.container-one-admin
-//ДАННЫЕ КОНТЕЙНЕРА В АДМИНКЕ
-//*************************************************************
-
-
+  color: #fff;
+  background-color: #008000
+}

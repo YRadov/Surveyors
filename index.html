@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ЛЕС 2</title>
+    <title>Les.3Community</title>
     <!-- [favicon] begin -->
     <link rel="shortcut icon" type="image/x-icon" href="img/el.jpg" />
     <link rel="icon" type="image/x-icon" href="img/el.jpg" />
@@ -46,9 +46,12 @@
                         <td>
                             <select class="form-control" id="cont-line">
                                 <option value="empty"></option>
-                                <option value="SMA">SMA</option>
+                                <option value="CMA">CMA</option>
                                 <option value="MSC">MSC</option>
                                 <option value="MAERSK">MAERSK</option>
+                                <option value="APL">APL</option>
+                                <option value="ZIM">ZIM</option>
+                                <option value="unknown">Другая</option>
                             </select>
                         </td>
                     </tr>
@@ -85,10 +88,9 @@
                         <td>
                             <!--<input type="text" class="form-control" id="emp-name" placeholder="Фамилия">-->
                             <select class="form-control" id="emp-name" placeholder="Фамилия">
-                                <option value=""></option>
+                                <option value="2">...</option>
                                 <option value="1">Радов</option>
-                                <option value="2">Гульчак</option>
-                                <option value="3">Паламарчук</option>
+                                <option value="3">Пархоменко</option>
                             </select>
                         </td>
                     </tr>
@@ -107,7 +109,6 @@
                 </table>
             </div><!-- .container-data -->
             <!--КОНЕЦ ДАННЫЕ КОНТЕЙНЕРА-->
-
 
             <!--НАЧАЛО МЕЛКОДРЕВА-->
             <div class="table-responsive melcodrev">
@@ -131,37 +132,37 @@
                     <tr>
                         <td>
                             <i class="fa fa-ban"></i>
-                            12 - <input type="text" diam="12" class="form-control param" id="diam12" placeholder="шт">
+                            12 - <input type="text" diam="12" class="form-control param-md" id="diam12" placeholder="шт">
                         </td>
                         <td>
-                            <input type="text" class="form-control param" id="val12" placeholder="объем" readonly>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <i class="fa fa-ban"></i>
-                            14 - <input type="text" diam="14" class="form-control param" id="diam14" placeholder="шт">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control param" id="val14" placeholder="объем" readonly>
+                            <input type="text" class="form-control param-md" id="val12" placeholder="объем" readonly>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <i class="fa fa-ban"></i>
-                            16 - <input type="text" diam="16" class="form-control param" id="diam16" placeholder="шт">
+                            14 - <input type="text" diam="14" class="form-control param-md" id="diam14" placeholder="шт">
                         </td>
                         <td>
-                            <input type="text" class="form-control param" id="val16" placeholder="объем" readonly>
+                            <input type="text" class="form-control param-md" id="val14" placeholder="объем" readonly>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <i class="fa fa-ban"></i>
-                            18 - <input type="text" diam="18" class="form-control param" id="diam18" placeholder="шт">
+                            16 - <input type="text" diam="16" class="form-control param-md" id="diam16" placeholder="шт">
                         </td>
                         <td>
-                            <input type="text" class="form-control param" id="val18" placeholder="объем" readonly>
+                            <input type="text" class="form-control param-md" id="val16" placeholder="объем" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i class="fa fa-ban"></i>
+                            18 - <input type="text" diam="18" class="form-control param-md" id="diam18" placeholder="шт">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control param-md" id="val18" placeholder="объем" readonly>
                         </td>
                     </tr>
                     <tr>
@@ -170,11 +171,11 @@
                     <tr>
                         <td>
                             шт
-                            <input type="text" class="form-control param" id="diam_total" placeholder="0" readonly>
+                            <input type="text" class="form-control param-md" id="diam_total" placeholder="0" readonly>
                         </td>
                         <td>
                             v
-                            <input type="text" class="form-control param" id="val_total" placeholder="0" readonly>
+                            <input type="text" class="form-control param-md" id="val_total" placeholder="0" readonly>
                         </td>
                     </tr>
                     <tr>
@@ -187,7 +188,6 @@
                 </table>
             </div><!-- .table-responsive -->
             <!--КОНЕЦ ФОРМЫ МЕЛКОДРЕВА-->
-
 
             <!--НАЧАЛО ВЫБОРА ДЛИНЫ-->
             <div class="row choose-len cliarfix">
@@ -205,7 +205,7 @@
             <!--КОНЕЦ ВЫБОРА ДЛИНЫ-->
 
             <!--НАЧАЛО ВВОДА ДИАМЕТРА-->
-            <h3>Ввести диаметр(14 - 100)</h3>
+            <h4>Ввести диаметр(14 - 100)</h4>
                 <div class="error"></div>
                 <div class="well-done"></div>
             <div>
@@ -217,6 +217,8 @@
             <div class="total-val total-val-top">
                 <input type="text" class="form-control param" id="total_val_top"  readonly="readonly">
             </div>
+            <i class="fa fa-ban"></i>
+            <span class="aver-diam"></span>
             <!--КОНЕЦ ВВОДА ДИАМЕТРА-->
 
             <br>
@@ -240,27 +242,68 @@
                                     <input type="text" class="form-control max-val" id="max-val-rest" placeholder="0"  readonly="readonly">
                                 </div>
                             </td>
+                        </tr>
                         <tr>
                             <td>
                                 <div><h4>V max</h4></div>
                                 <div class="max-val">
-                                    <input type="text" class="form-control max-val" id="max-val" placeholder="36200">
+                                    <input type="text" class="form-control max-val" id="max-val" placeholder="0">
                                 </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <button id="enter-styk" class="btn btn-default" onClick="event.preventDefault();">
+                                    ОТМЕТИТЬ СТЫК
+                                </button>
                             </td>
                         </tr>
                     </table>
                 </div><!-- .table-responsive -->
 
-                <h3>Общий объем</h3>
+                <div id="average-data">
+                    <h3>Средний объем, см3</h3>
+                    <div class="aver-val">
+                        <input type="text" class="form-control param" id="aver-val"  readonly="readonly">
+                    </div>
+
+                    <h3>Кол-во 4м и 6м</h3>
+                    <div class="aver-persent">
+                        4м <input type="text" class="form-control param-aver" id="aver-qty-4"  readonly="readonly">
+                        &nbsp;
+                        6м <input type="text" class="form-control param-aver" id="aver-qty-6"  readonly="readonly">
+                    </div>
+
+                    <h3>Объем 4м и 6м</h3>
+                    <div class="aver-persent">
+                        4м <input type="text" class="form-control param-aver" id="aver-val-4"  readonly="readonly">
+                        &nbsp;
+                        6м <input type="text" class="form-control param-aver" id="aver-val-6"  readonly="readonly">
+                    </div>
+
+                    <h3>Процентов, %</h3>
+                    <div class="aver-persent">
+                        4м <input type="text" class="form-control param-aver" id="aver-persent-4"  readonly="readonly">
+                        &nbsp;
+                        6м <input type="text" class="form-control param-aver" id="aver-persent-6"  readonly="readonly">
+                    </div>
+                </div>
+
+                <h3>Общий объем, см3</h3>
                 <div class="total-val">
                     <input type="text" class="form-control param" id="total_val"  readonly="readonly">
                 </div>
+
             </div>
             <hr>
             <!--КОНЕЦ ВЫВОДА MAX И ОБЩЕГО ОБЪЕМОВ-->
 
             <!--НАЧАЛО ВЫВОДА ВСЕЙ ЗАГРУЗКИ-->
             <h3>Вся загрузка</h3>
+            <button id="show_loading" class="btn btn-default">
+                ПОКАЗАТЬ
+            </button>
+
             <div class="table-responsive">
                 <table class="table table-res table-striped table-bordered">
                     <tr class="tab-header">
@@ -275,12 +318,12 @@
             </div><!-- .table-responsive -->
             <!--КОНЕЦ ВЫВОДА ВСЕЙ ЗАГРУЗКИ-->
 
-
+            <!--НАЧАЛО ОБЩЕГО УПРАВЛЕНИЯ-->
             <ul class="nav nav-pills nav-stacked">
                 <li>
                     <!--НАЧАЛО СИНХРОНИЗАЦИИ-->
                     <div class="sinhro">
-                        <button id="sinhro" class="btn btn-default">
+                        <button id="sinhro" class="btn btn-success">
                             СИНХРОНИЗИРОВАТЬ
                         </button>
                     </div><!-- .next-cont-->
@@ -289,7 +332,7 @@
                 <li>
                     <!--НАЧАЛО ПЕРЕХОДА К НОВОМУ КОНТЕЙНЕРУ-->
                     <div class="next-cont">
-                        <button id="next-cont" class="btn btn-default" onClick="event.preventDefault();">
+                        <button id="next-cont" class="btn btn-danger" onClick="event.preventDefault();">
                             Новый контейнер
                         </button>
                     </div><!-- .next-cont-->
@@ -298,17 +341,25 @@
                 <li>
                     <!--НАЧАЛО ВКЛЮЧИТЬ МЕЛКОДРЕВ-->
                     <div class="show-melcodrev">
-                        <button id="switch-on-melcodrev" class="btn btn-default">
+                        <button id="switch-on-melcodrev" class="btn btn-primary">
                             Мелкодрев
                         </button>
                     </div><!-- .next-cont-->
                     <!--КОНЕЦ ВКЛЮЧИТЬ МЕЛКОДРЕВ-->
                 </li>
+                <li>
+                    <!--НАЧАЛО ДОПОЛНИТЕЛЬНОГО РАЗДЕЛА-->
+                    <!--<div class="show-additional">-->
+                        <!--<button id="show-additional" class="btn btn-info">-->
+                            <!--Дополнительно-->
+                        <!--</button>-->
+                    <!--</div>&lt;!&ndash; .next-cont&ndash;&gt;-->
+                    <!--КОНЕЦ ДОПОЛНИТЕЛЬНОГО РАЗДЕЛА-->
+                </li>
             </ul>
+            <!--КОНЕЦ ОБЩЕГО УПРАВЛЕНИЯ-->
 
-            <div class="mesages_ajax">
-
-            </div>
+            <div class="mesages_ajax"></div>
 
             <footer>
                 2016&nbsp;&copy;&nbsp;<a href="http://radov.xyz/" target="_blank">radov.xyz</a>
@@ -322,60 +373,27 @@
       </div><!-- .row -->
 
   </div><!-- .container -->
-
-  <!--<nav class="navbar navbar-default navbar-fixed-top" role="navigation">-->
-      <!--<div class="container-fluid">-->
-          <!--&lt;!&ndash; Brand and toggle get grouped for better mobile display &ndash;&gt;-->
-          <!--<div class="navbar-header">-->
-              <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">-->
-                  <!--<span class="sr-only">Toggle navigation</span>-->
-                  <!--<span class="icon-bar"></span>-->
-                  <!--<span class="icon-bar"></span>-->
-                  <!--<span class="icon-bar"></span>-->
-              <!--</button>-->
-              <!--<a class="navbar-brand" href="#">LES.2</a>-->
-          <!--</div>-->
-
-          <!--&lt;!&ndash; Collect the nav links, forms, and other content for toggling &ndash;&gt;-->
-          <!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
-              <!--<ul class="nav navbar-nav">-->
-                  <!--<li class="active">-->
-                      <!--&lt;!&ndash;НАЧАЛО СИНХРОНИЗАЦИИ&ndash;&gt;-->
-                      <!--<div class="sinhro">-->
-                          <!--<button id="sinhro" class="btn btn-default">-->
-                              <!--СИНХРОНИЗИРОВАТЬ-->
-                          <!--</button>-->
-                      <!--</div>&lt;!&ndash; .next-cont&ndash;&gt;-->
-                      <!--&lt;!&ndash;КОНЕЦ СИНХРОНИЗАЦИИ&ndash;&gt;-->
-                  <!--</li>-->
-                  <!--<li>-->
-                      <!--<a href="#">Ссылка</a>-->
-                  <!--</li>-->
-              <!--</ul>-->
-          <!--</div>&lt;!&ndash; /.navbar-collapse &ndash;&gt;-->
-      <!--</div>&lt;!&ndash; /.container-fluid &ndash;&gt;-->
-  <!--</nav>-->
   <!--НАЧАЛО КЛАВИАТУРЫ-->
   <!--<div class="table-responsive numbers hidden-lg hidden-md hidden-sm">-->
   <div class="table-responsive numbers">
       <table class="table table-bordered">
           <tr>
-              <td val="1"><b>1</b></td>
-              <td val="2"><b>2</b></td>
-              <td val="3"><b>3</b></td>
-              <td val="4"><b>4</b></td>
-          </tr>
-          <tr>
-              <td val="5"><b>5</b></td>
               <td val="6"><b>6</b></td>
               <td val="7"><b>7</b></td>
               <td val="8"><b>8</b></td>
+              <td val="9"><b>9</b></td>
           </tr>
           <tr>
-              <td val="9"><b>9</b></td>
+              <td val="2"><b>2</b></td>
+              <td val="3"><b>3</b></td>
+              <td val="4"><b>4</b></td>
+              <td val="5"><b>5</b></td>
+          </tr>
+          <tr>
               <td val="0"><b>0</b></td>
-              <td class="del" val="del" title="удалить"><i class="fa fa-minus-square"></i></td>
-              <td class="ok" val="ok" title="закрыть"><i class="fa fa-check-square-o"></i></td>
+              <td val="1"><b>1</b></td>
+              <td class="del" val="del" title="удалить"><i class="fa fa-arrow-left"></i></td>
+              <td class="ok" val="ok" title="закрыть"><i class="fa fa-level-down" aria-hidden="true"></i></td>
           </tr>
       </table>
   </div><!-- .table-responsive -->

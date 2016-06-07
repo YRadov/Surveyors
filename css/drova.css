@@ -23,8 +23,17 @@ h1 {
 #all-lag {
   font-size: 20px;
 }
+.aver-diam {
+  border: 1px solid #fff;
+  border-radius: 3px;
+  color: #fff;
+  background-color: #008000;
+  font-size: 16px;
+  padding: 0 5px;
+  height: 44px;
+}
 #btn-text-enter {
-  color: red;
+  color: white;
   position: absolute;
   left: 40%;
   top: 0;
@@ -45,23 +54,22 @@ h1 {
   text-align: center;
 }
 .choose-len-wrap i {
-  color: red;
+  color: #f00;
   opacity: 0;
 }
 #delete {
-  color: red;
+  color: #f00;
 }
 #delete:hover {
   cursor: pointer;
 }
 #enter-diam {
-  background-color: transparent;
-  border: none;
+  background-color: red;
 }
 .error {
-  background-color: white;
-  border: 3px solid red;
-  color: red;
+  background-color: #fff;
+  border: 3px solid #f00;
+  color: #f00;
   display: none;
   font-size: 20px;
   width: 300px;
@@ -71,8 +79,8 @@ h1 {
   z-index: 999;
 }
 footer {
-  background-color: #222222;
-  color: white;
+  background-color: #222;
+  color: #fff;
   height: 50px;
   line-height: 50px;
   margin: 30px -10px -10px -10px;
@@ -80,18 +88,18 @@ footer {
   position: relative;
 }
 footer a {
-  color: white;
+  color: #fff;
 }
 footer a:hover {
-  color: red;
+  color: #f00;
 }
 footer i {
-  color: white;
+  color: #fff;
   position: absolute;
   right: 20px;
 }
 footer i:hover {
-  color: red;
+  color: #f00;
   cursor: pointer;
 }
 h3 {
@@ -125,7 +133,20 @@ label {
 }
 .param {
   display: inline-block;
+  font-size: 16px;
+  text-align: center;
+  width: 90px;
+}
+.param-aver {
+  display: inline-block;
+  font-size: 16px;
+  text-align: center;
+  width: 110px;
+}
+.param-md {
+  display: inline-block;
   font-size: 20px;
+  text-align: center;
   width: 90px;
 }
 .right {
@@ -153,8 +174,8 @@ label {
   text-align: center;
 }
 .total-val #total_val {
-  background-color: green;
-  color: white;
+  background-color: #008000;
+  color: #fff;
 }
 .total-val input {
   width: 100%;
@@ -163,22 +184,22 @@ label {
 .total-val-top {
   display: inline-block;
   margin: 5px auto;
-  width: 140px;
 }
 .total-val-top #total_val_top {
-  color: white;
-  background-color: green;
+  color: #fff;
+  background-color: #008000;
   font-size: 16px;
   padding: 0;
   height: 20px;
+  width: 100px;
 }
 #val {
   width: 110px;
 }
 .well-done {
-  background-color: white;
-  border: 3px solid green;
-  color: green;
+  background-color: #fff;
+  border: 3px solid #008000;
+  color: #008000;
   display: none;
   font-size: 20px;
   position: fixed;
@@ -192,30 +213,30 @@ label {
   max-width: 320px;
 }
 .numbers {
-  background-color: white;
+  background-color: #fff;
   display: none;
   position: fixed;
   bottom: -15px;
 }
 .numbers .del {
-  color: red;
+  color: #f00;
 }
 .numbers .del:hover {
-  color: red;
+  color: #f00;
 }
 .numbers .ok {
-  color: green;
+  color: #008000;
 }
 .numbers .ok:hover {
-  color: green;
+  color: #008000;
 }
 .numbers td {
-  font-size: 30px;
+  font-size: 20px;
   padding: 5px;
 }
 .numbers td:hover {
   background-color: #999;
-  color: white;
+  color: #fff;
   cursor: pointer;
 }
 .show-sos {
@@ -226,7 +247,7 @@ label {
   position: relative;
 }
 .sos-wrapper .sos {
-  background-color: white;
+  background-color: #fff;
   text-align: center;
   padding: 10px;
   width: 300px;
@@ -236,20 +257,20 @@ label {
   text-align: center;
 }
 .melcodrev {
-  background-color: white;
+  background-color: #fff;
   display: none;
 }
 .melcodrev .close-melcodrev {
-  background-color: red;
+  background-color: #f00;
   vertical-align: middle;
 }
 .melcodrev .close-melcodrev .btn {
   border: 5px solid #ccc;
-  color: red;
+  color: #f00;
   font-weight: bold;
 }
 .melcodrev select {
-  font-size: 20px;
+  font-size: 16px;
 }
 .melcodrev select option {
   text-align: center;
@@ -261,6 +282,10 @@ label {
   margin-top: 20px;
   text-align: center;
 }
+.show-additional {
+  margin-top: 20px;
+  text-align: center;
+}
 .container-data {
   text-align: center;
 }
@@ -268,10 +293,39 @@ label {
   margin-bottom: 10px;
 }
 .container-data .table-container-data {
-  background-color: white;
+  background-color: #fff;
   padding: 10px 0 20px;
   text-align: center;
+  display: none;
 }
 .container-one-admin {
   width: 50%;
+}
+#row_up {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+}
+#row_up i {
+  color: #f00;
+}
+#average-data .aver-val {
+  text-align: center;
+}
+#average-data .aver-val #aver-val {
+  background-color: #008000;
+  color: #fff;
+}
+#average-data .aver-val input {
+  width: 100%;
+  text-align: center;
+}
+#average-data .aver-persent #aver-persent-4,
+#average-data .aver-persent #aver-persent-6,
+#average-data .aver-persent #aver-qty-4,
+#average-data .aver-persent #aver-qty-6,
+#average-data .aver-persent #aver-val-4,
+#average-data .aver-persent #aver-val-6 {
+  color: #fff;
+  background-color: #008000;
 }
